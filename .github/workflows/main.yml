@@ -86,7 +86,7 @@ jobs:
    - name: Read changelog file
      run: |
          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-         "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+         "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion
      shell: bash
         
 # create a new pre-released version
