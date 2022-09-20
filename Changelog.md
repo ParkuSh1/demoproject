@@ -1,7 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## 0.0.1 - 2022-09-20 
+## 0.0.2 - 2022-09-20 
 
 ## [Unreleased]
 ### Added 
@@ -13,5 +13,4 @@
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
--s4-COnfig Branch "Änderungen chn" noch nicht released deswegen wurde MW_ParameterModelObjects.ewu überschrieben
-- Touch Handler/Process Selection in Prozessauswahl screen anpassen
+-understanding the logic of docker
