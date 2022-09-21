@@ -8,7 +8,7 @@ echo -e "\nRemoving \t backslash \t characters\n"
 set "projectdir=%1"
 
 setlocal enabledelayedexpansion
-set "file1=%projectdir%\\CHANGELOG.md"
+set "file1=${GITHUB_WORKSPACE}/.github/workflows/script.sh"
 set i=0
 set "_SUBSTR=##"
 
