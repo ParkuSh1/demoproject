@@ -1,7 +1,4 @@
 #!/bin/bash
-::Extract version number from changelog.md
-:: arg1 is the build directory
-:: arg2 return variable
 
 echo "Printing text with newline"
 echo -n "Printing text without newline"
@@ -15,6 +12,7 @@ set "file1=%projectdir%\\CHANGELOG.md"
 set i=0
 set "_SUBSTR=##"
 
+echo %file1%
 for /F "delims=" %%a in (%file1%) do (
     set /A i+=1
     set "array[!i!]=%%a"
