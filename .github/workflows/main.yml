@@ -87,7 +87,7 @@ jobs:
      run: |
          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
          "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion
-     shell: bash
+     shell: sh
         
 # create a new pre-released version
    - name: Pre-Release
