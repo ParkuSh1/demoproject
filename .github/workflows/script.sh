@@ -1,15 +1,12 @@
-#!/bin/sh
+#!usr/bin/env bash
 
 set "projectdir=$1"
 
-set "file1=%projectdir%\\..\\CHANGELOG.md"
-set i=0
-set "_SUBSTR=##"
-
-for /F "delims=" %%a in (%file1%) do (
-    set /A i+=1
-    set "array[!i!]=%%a"
-)
-
-rem below loop to print the file content
-for /L %%A in (1,1,%i%) do echo !array[%%A]!
+input="D:\GIT_Source\HMI_Project\demoproject\CHANGELOG.md"
+######################################
+# $IFS removed to allow the trimming # 
+#####################################
+while read -r line
+do
+  echo "$line"
+done < "$input"
