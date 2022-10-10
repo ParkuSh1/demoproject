@@ -2,7 +2,7 @@
 
 set "projectdir=$1"
 
-input="D:\\GIT_Source\\HMI_Project\\demoproject\\CHANGELOG.md"
+input="${GITHUB_WORKSPACE}/CHANGELOG.md"
 ######################################
 # $IFS removed to allow the trimming # 
 #####################################
