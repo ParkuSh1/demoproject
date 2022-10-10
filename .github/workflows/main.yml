@@ -74,7 +74,7 @@ jobs:
 
 # run a bash script
    - name: run a multiline script
-     run: ./script.sh
+     run: ./workflow/script.sh
 
 # create a new released version
    - name: Release
