@@ -2,7 +2,7 @@
 
 set "projectdir=$1"
 
-input="${GITHUB_WORKSPACE}\..\CHANGELOG.md"
+input="${GITHUB_WORKFLOW}\..\..\CHANGELOG.md"
 ######################################
 # $IFS removed to allow the trimming # 
 #####################################
