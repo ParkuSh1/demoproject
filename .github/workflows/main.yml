@@ -76,8 +76,8 @@ jobs:
    - name: run a script to extract version
      run: |
          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-		 cat "${GITHUB_WORKSPACE}/.github/workflows/entry.txt"
-		 chmod +x "${GITHUB_WORKSPACE}/.github/workflows/entry.txt"
+         cat "${GITHUB_WORKSPACE}/.github/workflows/entry.txt"
+         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/entry.txt"
          sh "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion >> "${GITHUB_WORKSPACE}/.github/workflows/entry.txt"
 
 # create a new released version
