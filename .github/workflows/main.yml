@@ -74,10 +74,9 @@ jobs:
 
 # run a bash script
    - name: run a script to extract version
-     uses: actions/checkout@v2
      run: |
          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-         sh "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion
+         sh "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
 
 # create a new released version
    - name: Release
