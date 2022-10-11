@@ -14,6 +14,7 @@ then
 	echo "File not found1"
 fi
 
+chmod +777 $1/changelogversion.txt
 echo $ChangeLogVersion > $1/changelogversion.txt
 
 #grep -m1 '##' $1/Changelog.md | \
