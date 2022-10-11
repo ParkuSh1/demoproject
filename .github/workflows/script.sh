@@ -4,10 +4,17 @@
 echo "$1."
 input=$1/Changelog.md
 
+output=$1/logout.txt
+
 ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
-echo $ChangeLogVersion >> "$1/changelogversion.txt"
+if [ ! -f $1/changelogversion.txt ]
+then
+	echo "File not found1"
+fi
+
+echo $ChangeLogVersion > "$1/changelogversion.txt"
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
 
