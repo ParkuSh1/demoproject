@@ -7,7 +7,7 @@ input=$1/Changelog.md
 ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
-echo $ChangeLogVersion 2>> "D:\log1.txt"
+echo $ChangeLogVersion &2>> "D:\log1.txt"
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
 
