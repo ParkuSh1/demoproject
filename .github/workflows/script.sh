@@ -9,7 +9,7 @@ output=$1/logout.txt
 ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
-if [ ! -f $1/demo.txt]
+if [ ! -f $1/main.c ]
 then
 	echo "File not found"
 fi
