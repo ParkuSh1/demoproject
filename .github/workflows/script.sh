@@ -11,7 +11,7 @@ ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
 
 if [ ! -f $1/demo.txt ]
 then
-	echo "File not found"
+	echo "File not found1"
 fi
 
 echo $ChangeLogVersion 
