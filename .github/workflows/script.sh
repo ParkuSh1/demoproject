@@ -9,8 +9,10 @@ output=$1/logout.txt
 ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
-$(grep -m1 '##' $1/Changelog.md | \
-  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}') >> lot.txt
+if [ ! -f /etc/demo.txt ]
+then
+	echo "File not found"
+fi
 
 echo $ChangeLogVersion 
 #grep -m1 '##' $1/Changelog.md | \
