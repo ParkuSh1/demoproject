@@ -3,7 +3,7 @@
 #set "projectdir=$1"
 echo "The first argument is $1."
 
-input=$1//CHANGELOG.md
+input=$1/Changelog.md
 ######################################
 # $IFS removed to allow the trimming # 
 #####################################
