@@ -9,7 +9,10 @@ output=$1/logout.txt
 ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
-echo $ChangeLogVersion > output
+$(grep -m1 '##' $1/Changelog.md | \
+  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}') >> lot.txt
+
+echo $ChangeLogVersion 
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
 
