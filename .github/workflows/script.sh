@@ -11,6 +11,7 @@ ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
 echo $ChangeLogVersion | tee $LOG 2>&1
+chmod +x $LOG
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
 
