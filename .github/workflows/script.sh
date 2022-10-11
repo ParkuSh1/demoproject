@@ -1,8 +1,9 @@
 #!usr/bin/env bash
 
-set "projectdir=$1"
+#set "projectdir=$1"
+echo "The first argument is $1."
 
-input="projectdir\CHANGELOG.md"
+input=$1\CHANGELOG.md
 ######################################
 # $IFS removed to allow the trimming # 
 #####################################
