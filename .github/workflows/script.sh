@@ -1,10 +1,14 @@
-function myfunc()
-{
-    local  __resultvar=$1
-    local  myresult='some value'
-    eval $__resultvar="'$myresult'"
-}
+#!usr/bin/env bash
 
+#set "projectdir=$1"
+echo "The first argument is $1."
+
+input=$1/Changelog.md
+
+ChangeLogVersion=$(grep -m1 '##' $1/Changelog.md | \
+  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+
+echo $ChangeLogVersion
 
 
 #grep -m1 '##' $1/Changelog.md | \
