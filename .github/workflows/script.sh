@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/bin/bash
 
 #set "projectdir=$1"
 echo "$1."
