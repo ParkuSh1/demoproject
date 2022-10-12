@@ -2,8 +2,9 @@
 
 #set "projectdir=$1"
 echo $1
-echo ${GITHUB_ACTION_PATH}
-ChangeLogVersion=$(grep -m1 '##' $1/../../CHANGELOG.md | \
+echo $GITHUB_WORKFLOW
+echo $GITHUB_WORKSPACE
+ChangeLogVersion=$(grep -m1 '##' $1\\CHANGELOG.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
 echo $ChangeLogVersion
