@@ -75,6 +75,7 @@ jobs:
 # run a bash script
    - name: run a script to extract version
      run: |
+         echo ${GITHUB_WORKSPACE}
          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
          bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion 
 
