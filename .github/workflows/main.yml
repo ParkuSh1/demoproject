@@ -81,7 +81,7 @@ jobs:
 
 # create a new released version
    - name: Release
-     if: ( startsWith(github.event.ref, 'refs/tags/v') ) 
+     if: startsWith(github.event.ref, 'refs/tags/v')  
      uses: docker://antonyurchenko/git-release:latest
      env:
        PRE_RELEASE: false
@@ -91,7 +91,7 @@ jobs:
         
 # create a new pre-Release version
    - name: Pre-Release
-     if: ( ! startsWith(github.ref, 'refs/tags/v') )
+     if: ! startsWith(github.event.ref, 'refs/tags/v') 
      uses: docker://antonyurchenko/git-release:latest
      env:
        #GITHUB_TOKEN: ${{ secrets.token }}
