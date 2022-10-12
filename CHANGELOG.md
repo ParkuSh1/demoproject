@@ -1,7 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.1.6] - 2022-09-19 
+## [0.0.6] - 2022-09-19 
 
 ## [Unreleased]
 ### Added 
