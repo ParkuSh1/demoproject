@@ -95,7 +95,7 @@ jobs:
      with:
        args: download/*.zip
         
-# create a new pre-released version
+# create a new pre-release version
    - name: Pre-Release
      if: ( ! startsWith(github.ref, 'refs/tags/v') )
      uses: docker://antonyurchenko/git-release:latest
