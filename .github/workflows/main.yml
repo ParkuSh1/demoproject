@@ -80,6 +80,8 @@ jobs:
 
 # retrieve version
    - name: Retrieve version
+     env:
+	   ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
          echo ::set-env name=TAG_NAME::$(grep -m1 '##' $1/Changelog.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
