@@ -83,11 +83,21 @@ jobs:
      env:
        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
-         echo ::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+         echo ::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/Changelog.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
+# create a new released version
+   - name: Release
+     if: ( startsWith(github.ref, 'refs/tags/v') )
+     uses: docker://antonyurchenko/git-release:latest
+     env:
+       PRE_RELEASE: false
+       DRAFT_RELEASE: false
+     with:
+       args: download/*.zip
+        
 # create a new pre-Release version
    - name: Pre-Release
-     if: (! startsWith(github.event.ref, 'refs/tags/v')) 
+     if: ( ! startsWith(github.ref, 'refs/tags/v') )
      uses: docker://antonyurchenko/git-release:latest
      env:
        #GITHUB_TOKEN: ${{ secrets.token }}
@@ -97,16 +107,3 @@ jobs:
        DRAFT_RELEASE: false
      with:
        args: download/*.zip
-
-# create a new released version
-   - name: Release
-     if: startsWith(github.event.ref, 'refs/tags/v')  
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "${{ env.TAG_NAME }}"
-       PRE_RELEASE: false
-       DRAFT_RELEASE: false
-     with:
-       args: download/*.zip
-        
-
