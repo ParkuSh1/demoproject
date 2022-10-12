@@ -78,14 +78,10 @@ jobs:
          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
          bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion 
 
-# store file
-   - name: Overwrite file
-     uses: "DamianReeves/write-file-action@master"
-     with:
-       path: ${GITHUB_WORKSPACE}/changelogversion.txt
-       write-mode: overwrite
-       contents: |
-           console.log('some contents')
+# retrieve version
+   - name: Retrieve version
+      run: |
+      echo ::set-env name=TAG_NAME::$(grep -m1 '##' $1/Changelog.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
 # create a new released version
    - name: Release
