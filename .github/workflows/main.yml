@@ -72,6 +72,16 @@ jobs:
      if: ( ! startsWith(github.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
+# This action checks CHANGELOG.md for current version of project
+# This version read from CHANGELOG.md file and added as predecessor to commit message 
+# It makes easy to understand from which version and which commit the documentation is generated
+   - name: check changelog
+     id: check_changelog
+     run: |
+        [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
+        IMAGE_VERSION=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
+        echo "IMAGE_VERSION: $IMAGE_VERSION"	 
+
 # retrieve version
    - name: Retrieve version
      env:
