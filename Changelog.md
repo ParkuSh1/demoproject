@@ -1,11 +1,11 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [v0.9.1] - 2022-10-12 
+## [v0.9.2] - 2022-10-12 
 
 
 ### Added 
-- understanding release process
+- understanding release process, how to add the tag
 
 ### Changed
 -  checking tag for release and pre release
