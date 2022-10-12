@@ -72,12 +72,6 @@ jobs:
      if: ( ! startsWith(github.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
-# run a bash script
-   - name: run a script to extract version
-     run: |
-         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion 
-
 # retrieve version
    - name: Retrieve version
      env:
@@ -87,7 +81,7 @@ jobs:
 
 # create a new released version
    - name: Release
-     if: ( startsWith(github.ref, 'refs/tags/v') )
+     if: ( startsWith(github.event.ref, 'refs/tags/v') ) 
      uses: docker://antonyurchenko/git-release:latest
      env:
        PRE_RELEASE: false
