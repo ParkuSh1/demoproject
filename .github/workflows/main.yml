@@ -72,12 +72,18 @@ jobs:
      if: ( ! startsWith(github.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
-# retrievee version
+# run a bash script
+   - name: run a script to extract version
+     run: |
+         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion 
+
+# retrieve version
    - name: Retrieve version
      env:
        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
-       echo::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}//CHANGELOG.md |awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+         echo ::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
 # create a new pre-Release version
    - name: Pre-Release
