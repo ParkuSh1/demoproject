@@ -83,7 +83,8 @@ jobs:
      env:
        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
-          echo "::set-output name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')"
+          echo "TAG_NAM=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
+#echo "::set-output name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')"
 
 #echo::set-env name=TAG_NAME::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
