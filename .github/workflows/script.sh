@@ -2,11 +2,7 @@
 
 #set "projectdir=$1"
 echo "$1."
-input=$1/CHANGELOG.md
-
-output=$1/logout.txt
-
-ChangeLogVersion=$(grep -m1 '##' $1/CHANGELOG.md | \
+ChangeLogVersion=$(grep -m1 '##' $1/../CHANGELOG.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
 echo $ChangeLogVersion
