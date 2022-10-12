@@ -8,7 +8,7 @@
 - understanding release process
 
 ### Changed
--  dpcker
+-  docker understanding
 
 ### Fixed
 ### Removed
