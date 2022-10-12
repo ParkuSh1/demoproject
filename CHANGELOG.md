@@ -8,7 +8,7 @@
 - understanding release process
 
 ### Changed
--  checking tag for release and pre release
+-  dpcker
 
 ### Fixed
 ### Removed
