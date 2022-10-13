@@ -80,7 +80,8 @@ jobs:
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
         TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
         echo "TAG_NAME: $TAG_NAME"
-        echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_ENV"
+        echo "TAG_NAME: ${TAG_NAME:1:-1}"
+        echo "TAG_NAME=v$TAG_NAME" >> "$GITHUB_ENV"
 
 # retrieve version1
 #   - name: Retrieve version
