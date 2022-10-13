@@ -79,6 +79,11 @@ jobs:
      run: |
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
         TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2 )
+        if [[ $TAG_NAME != *['!'[]@#\$%^\&*()_+]* ]]
+        then
+          echo "It does not contains one of those" 
+          echo "::error::File CHANGELOG.md version without square bracket!" && false 
+        fi
         TAG_NAME1=${TAG_NAME:1:-1}
         echo "TAG_NAME1: $TAG_NAME1"
         echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
