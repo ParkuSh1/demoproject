@@ -92,7 +92,7 @@ jobs:
 
 # retrieve version
    - name: Retrieve version
-     id: random-color-generator1
+     id: random-color-generator2
      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
      run: |
