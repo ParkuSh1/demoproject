@@ -12,7 +12,7 @@ name: demoproject Workflow
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  push:
+  pull:
     branches: 
         - main
 env:
@@ -25,7 +25,7 @@ jobs:
 # Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
 # this job compares existing CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
   enforce-changelog:
-    if: github.event_name == 'push'
+    if: github.event_name == 'pull'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
@@ -47,7 +47,7 @@ jobs:
 #
 # else "v" before version number without unreleased tag, it will be a release version:           for eg. ## [v1.0.0] - yyyy-mm-dd
   release:
-   if: github.event_name == 'push'
+   if: github.event_name == 'pull'
     # The type of runner that the job will run on
    runs-on: ubuntu-latest
 # Steps represent a sequence of tasks that will be executed as part of the job
