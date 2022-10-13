@@ -78,9 +78,9 @@ jobs:
      id: Get_version_Changelog
      run: |
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
-        TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
-        echo "TAG_NAME: $TAG_NAME"
-        echo "TAG_NAME1: ${TAG_NAME:1:-1}"
+        TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2 )
+        TAG_NAME1=${TAG_NAME:1:-1}
+        echo "TAG_NAME1: $TAG_NAME1"
         echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
 
 # retrieve version1
