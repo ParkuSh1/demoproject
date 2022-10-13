@@ -1,14 +1,15 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.2] - 2022-09-19 
+## v[0.0.2] - 2022-09-19 
 
-## [Unreleased]
+
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
 - ETH Status and WIFI_Status as StatusIcon Widget (derived)
 - List of Materials, wires and gases are available for weldprogram selection
+- ## [Unreleased]
 
 ### Changed
 -  docker understanding
