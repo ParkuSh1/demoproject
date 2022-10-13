@@ -85,9 +85,11 @@ jobs:
           ChangeLogVersion=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $ChangeLogVersion
           echo "{TAG_NAME}={$ChangeLogVersion}" >> $GITHUB_ENV
+          echo "action_state=yellow" >> $GITHUB_ENV
           echo "::set-env name=VERSION::$ChangeLogVersion"
           echo "${{ env.TAG_NAME }}"
           echo "${{ env.VERSION  }}"
+          echo "${{ env.action_state }}" # This will output 'yellow'
 
 #echo "TAG_NAME=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
 #echo "TAG_NAM=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
