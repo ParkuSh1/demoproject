@@ -1,7 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.1] - 2022-09-19 
+## [0.0.2] - 2022-09-19 
 
 ## [Unreleased]
 ### Added 
@@ -9,11 +9,6 @@
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
 - ETH Status and WIFI_Status as StatusIcon Widget (derived)
 - List of Materials, wires and gases are available for weldprogram selection
-- welprograms are displayed with there Bitmap and Weldprog_ID
-- Control Parameters (JC_Param) can be managed and controlled between GUI<->Mapro 
-- New seperate Unit "WeldFunctions" added for JC_Param 
-- JC_Pamrametr Program Nummer ist visible im Status Zeile 
-- Prog Nummer Änderung via GUI im Mapro erkannt
 
 ### Changed
 -  docker understanding

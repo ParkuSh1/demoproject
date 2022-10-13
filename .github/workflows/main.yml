@@ -75,13 +75,13 @@ jobs:
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and added as predecessor to commit message 
 # It makes easy to understand from which version and which commit the documentation is generated
-   - name: check changelog
-     id: check_changelog1
+   - name: Get_version_Changelog
+     id: Get_version_Changelog
      run: |
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
         TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
         echo "TAG_NAME: $TAG_NAME"
-        echo "TAG_NAME=v$TAG_NAME" >> "$GITHUB_ENV"
+        echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_ENV"
 
 # retrieve version
    - name: Retrieve version
