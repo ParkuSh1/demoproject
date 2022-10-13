@@ -85,7 +85,7 @@ jobs:
        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
           ChangeLogVersion=$(grep -m1 '##' $1/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
-		  echo "TAG_NAME=$ChangeLogVersion" >> $GITHUB_ENV
+          echo "TAG_NAME=$ChangeLogVersion" >> $GITHUB_ENV
           echo ${{env.TAG_NAME }}
 
 #echo "TAG_NAME=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
