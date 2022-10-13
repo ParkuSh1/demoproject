@@ -7,6 +7,7 @@ ChangeLogVersion=$(grep -m1 '##' $1/CHANGELOG.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
 echo $ChangeLogVersion
+echo "VERSIOB=$ChangeLogVersion" >> $GITHUB_ENV
 
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
