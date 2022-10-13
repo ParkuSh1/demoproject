@@ -84,22 +84,23 @@ jobs:
      env:
        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
-          echo "::set-env name=TAG_NAME::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')"
-          echo "::set-env name=VERSION::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}') "
-          echo ${{env.VERSION }}
+          ChangeLogVersion=$(grep -m1 '##' $1/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+		  echo "TAG_NAME=$ChangeLogVersion" >> $GITHUB_ENV
+          echo ${{env.TAG_NAME }}
 
 #echo "TAG_NAME=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
 #echo "TAG_NAM=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
 #echo "::set-output name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')"
 #echo::set-env name=TAG_NAME::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
-
+#          echo "::set-env name=TAG_NAME::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')"
+#          echo "::set-env name=VERSION::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}') "
 # create a new pre-Release version
    - name: Pre-Release
      if: (! startsWith(github.ref, 'refs/tags/v')) 
      uses: docker://antonyurchenko/git-release:latest
      env:
        #GITHUB_TOKEN: ${{ secrets.token }}
-       RELEASE_NAME: ${{ env.VERSION }}"
+       RELEASE_NAME: ${{ env.TAG_NAME }}"
        UNRELEASED: update
        PRE_RELEASE: true
        DRAFT_RELEASE: false
@@ -111,7 +112,7 @@ jobs:
      if: startsWith(github.ref, 'refs/tags/v')  
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.VERSION }}"
+       RELEASE_NAME: "${{ env.TAG_NAME }}"
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
