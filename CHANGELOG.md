@@ -16,7 +16,7 @@
 - Prog Nummer Änderung via GUI im Mapro erkannt
 
 ### Changed
--  checking tag for release and pre release
+-  docker understanding
 
 ### Fixed
 ### Removed
