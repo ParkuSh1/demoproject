@@ -1,11 +1,19 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.6] - 2022-09-19 
+## [0.0.1] - 2022-09-19 
 
 ## [Unreleased]
 ### Added 
-- understanding release process
+- FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
+- WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
+- ETH Status and WIFI_Status as StatusIcon Widget (derived)
+- List of Materials, wires and gases are available for weldprogram selection
+- welprograms are displayed with there Bitmap and Weldprog_ID
+- Control Parameters (JC_Param) can be managed and controlled between GUI<->Mapro 
+- New seperate Unit "WeldFunctions" added for JC_Param 
+- JC_Pamrametr Program Nummer ist visible im Status Zeile 
+- Prog Nummer Änderung via GUI im Mapro erkannt
 
 ### Changed
 -  checking tag for release and pre release
