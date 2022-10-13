@@ -1,4 +1,4 @@
-# Workflow for HMI Projekt.
+# Workflow for demoproject .
 # Author - Sagar Chande (CHN), Lorch Schweisstechnik GmbH
 # This workflow contains a multiple jobs called "enforce-changelog", "release" and "doxygen"
 # "enforce-changelog" job needs git event as "pull-request" to master
@@ -7,19 +7,35 @@
 # Please select the correct required doxyfile in doxyfile-path: variable in job doxygen. based on this selection documentation for different configurations (F7xx, H7xx) will be generated
 # in default Doxyfile, documentation for F7xx configuration will be generated
 
-name: HMI Workflow
+name: demoproject Workflow
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
     branches: 
-        - UpdateReleaseTag
+        - main
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
+# enforce-changelog job is responsible to monitor the CHANGELOG.md file before pull-rquest to master
+# Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
+# this job compares existing CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
+  enforce-changelog:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - uses: dangoslen/changelog-enforcer@v2
+      with:
+        changeLogPath: 'CHANGELOG.md'
+        skipLabels: 'Skip-Changelog'
+        missingUpdateErrorMessage: >
+          Changelog Enforcer: No update to CHANGELOG.md found!
+          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
 
 # release job is responsible to release a pre-release version/tag with name "latest"
 # there are 4 steps in this Job
@@ -40,52 +56,21 @@ jobs:
    - name: checkout
      uses: actions/checkout@v2
 
-# run a bash script
-   - name: run a script to extract version
-     run: |
-         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion 
-
-# retrieve version
-   - name: Retrieve version
-     env:
-       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-     run: |
-          echo "::set-env name=TAG_NAME::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')"
-
-# create a new pre-released version
-   - name: Pre-Release
-     if: (  startsWith(github.ref, 'refs/tags/v') )
+   - name: Delete last Pre-Release
+     if: ( ! startsWith(github.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME }}"
-       PRE_RELEASE: false
-       DRAFT_RELEASE: false
-     with:
-       args: download/*.zip
-
-# create a new pre-released version
-   - name: Pre-Release
-     if: ( ! startsWith(github.ref, 'refs/tags/v') )
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       UNRELEASED: update
+       RELEASE_NAME: "Latest"
+       UNRELEASED: delete
        PRE_RELEASE: true
-       DRAFT_RELEASE: false
+       DRAFT_RELEASE: true
      with:
        args: download/*.zip
 
-# doxygen job is responsible to generate documentation of HMI-Project and to store in a seperate branch gh-pages
-# User can download gh-pages branch as zip folder and open index.html file to see the projct documentation
-# there are four steps in this job - "check changelog" , Check project number, "Doxygen Action", and "deploy"
-  doxygen:
-   if: github.event_name == 'push'
-   runs-on: ubuntu-latest
-   needs: release
-   steps:
-# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-   - name: checkout
-     uses: actions/checkout@v2
+# Delete the last "latest" release version tag (and not pre-released one) if exists
+   - name: Delete tag latest
+     if: ( ! startsWith(github.ref, 'refs/tags/v'))
+     run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and added as predecessor to commit message 
@@ -95,38 +80,37 @@ jobs:
      run: |
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
         IMAGE_VERSION=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
-        echo "IMAGE_VERSION: $IMAGE_VERSION"
-        [[ "$IMAGE_VERSION" == $IMAGE_TAG ]] && exit 0
-        reg_ex='^([0-9]+\.){2}(\*|[0-9]+)(-.*)?$'
-        [[ $IMAGE_VERSION =~ $reg_ex ]] || ( echo "::error::First Version Tag in CHANGELOG.md not SemVer or 'latest'!" && false )
-        echo "IMAGE_VERSION=v$IMAGE_VERSION" >> "$GITHUB_ENV"
-        echo "env.IMAGE_VERSION: $IMAGE_VERSION"
-        echo "::set-output name=image_version::${IMAGE_VERSION}"
+        echo "IMAGE_VERSION: $IMAGE_VERSION"	 
 
-# This action checks CHANGELOG.md for project number.
-# It adds this project number to PROJECT_NUMBER tag in doxyfile (in docker) and then use this project number to generate the documentation
-# Project number extracted by this action can be seen in file index.html heading from web browser
-   - name: Check project number
+# retrieve version
+   - name: Retrieve version
+     env:
+       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
-        sed --in-place -r "s/^.*(PROJECT_NUMBER[ ]*=).*/\1 \"$IMAGE_VERSION\"/g" ./HMI_Projekt/Doxyfile
+         echo ::set-env name=TAG_NAME::$(grep -m1 '##' ../../CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
-# state hier the doxyfile path from your repository
-# This action generated the documentation depending on your doxyfile settings (see main.yml comment at the satrt of this file)
-   - name: Doxygen Action
-     uses: mattnotmitt/doxygen-action@v1.1.0
+# create a new pre-Release version
+   - name: Pre-Release
+     if: (! startsWith(github.event.ref, 'refs/tags/v')) 
+     uses: docker://antonyurchenko/git-release:latest
+     env:
+       #GITHUB_TOKEN: ${{ secrets.token }}
+       RELEASE_NAME: "${{ env.TAG_NAME }}"
+       UNRELEASED: update
+       PRE_RELEASE: true
+       DRAFT_RELEASE: false
      with:
-       # Path to Doxyfile
-       doxyfile-path: "./HMI_Projekt/Doxyfile" # default is ./Doxyfile
-       # Working directory
-       working-directory: '.' # default is .
+       args: download/*.zip
 
-# This action deploy the generated documentation from "html" folder in a seperate branch gh-pages on the github.
-# It also appends the version number which read in previous step from CHANGELOG.md file and commit message to the complete commit
-   - name: Deploy
-     uses: peaceiris/actions-gh-pages@v3
+# create a new released version
+   - name: Release
+     if: startsWith(github.event.ref, 'refs/tags/v')  
+     uses: docker://antonyurchenko/git-release:latest
+     env:
+       RELEASE_NAME: "${{ env.TAG_NAME }}"
+       PRE_RELEASE: false
+       DRAFT_RELEASE: false
      with:
-      github_token: ${{ secrets.GITHUB_TOKEN  }}
-      # Default Doxyfile build documentation to html directory. 
-      # Change the directory if changes in Doxyfile
-      publish_dir: ./html
-      commit_message: '${{ steps.check_changelog.outputs.image_version}} ${{github.event.head_commit.message}}'
+       args: download/*.zip
+        
+
