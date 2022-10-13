@@ -79,6 +79,13 @@ jobs:
          bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion 
          echo ${{env.VERSION }}
 
+   - name: Set color
+     id: random-color-generator
+     run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+      
+   - name: Get color
+     run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+
 # retrieve version
    - name: Retrieve version
      env:
