@@ -84,7 +84,7 @@ jobs:
           echo "TAG_NAME1: $TAG_NAME1"
           echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
         else
-          echo "::error::File CHANGELOG.md version without square bracket!" && false 
+           echo "::error::File CHANGELOG.md version without square bracket!" && false
         fi
         
 
