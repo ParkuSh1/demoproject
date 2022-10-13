@@ -76,16 +76,15 @@ jobs:
    - name: run a script to extract version
      run: |
          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion    
+         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE} ChangeLogVersion  
+		 
 # retrieve version
    - name: Retrieve version
      id: random-color-generator1
      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
      run: |
-          ChangeLogVersion=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
-          echo $ChangeLogVersion
-          echo "SELECTED_COLOR1=$ChangeLogVersion" >> $GITHUB_OUTPUT           
+          echo "SELECTED_COLOR1=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_OUTPUT           
       
    - name: Get color
      run: echo "The selected color is ${{ steps.random-color-generator1.outputs.SELECTED_COLO1 }}"
