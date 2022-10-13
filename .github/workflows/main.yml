@@ -81,8 +81,6 @@ jobs:
 
 # retrieve version
    - name: Retrieve version
-     env:
-       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
           ChangeLogVersion=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $ChangeLogVersion
