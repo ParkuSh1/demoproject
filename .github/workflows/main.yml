@@ -76,7 +76,7 @@ jobs:
 # This version read from CHANGELOG.md file and added as predecessor to commit message 
 # It makes easy to understand from which version and which commit the documentation is generated
    - name: check changelog
-     id: check_changelog
+     id: check_changelog1
      run: |
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
         TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
