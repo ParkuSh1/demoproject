@@ -97,7 +97,7 @@ jobs:
      run: |
           ChangeLogVersion=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $ChangeLogVersion
-          echo "TF_VAR_project_name=${{ $ChangeLogVersion }}" >> $GITHUB_ENV
+          echo "TF_VAR_project_name= $ChangeLogVersion" >> $GITHUB_ENV
           echo "SELECTED_COLOR2=$ChangeLogVersion" >> $GITHUB_OUTPUT
           echo "{TAG_NAME}={$ChangeLogVersion}" >> $GITHUB_ENV
 
