@@ -79,15 +79,16 @@ jobs:
      id: check_changelog
      run: |
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
-        IMAGE_VERSION=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
-        echo "IMAGE_VERSION: $IMAGE_VERSION"	 
+        TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
+        echo "TAG_NAME: $TAG_NAME"
+        echo "TAG_NAME=v$TAG_NAME" >> "$GITHUB_ENV"
 
 # retrieve version
    - name: Retrieve version
      env:
        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
-         echo ::set-env name=TAG_NAME::$(grep -m1 '##' ../../CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+         echo ::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 
 # create a new pre-Release version
    - name: Pre-Release
