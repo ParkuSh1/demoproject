@@ -88,6 +88,8 @@ jobs:
           echo "action_state=yellow" >> $GITHUB_ENV        
           echo "${{ env.TAG_NAME }}"
           echo "${{ env.action_state }}" # This will output 'yellow'
+          echo "VERSION=v$ChangeLogVersion" >> "$GITHUB_ENV"
+          echo "${{ env.VERSION }}"
 
 #echo "TAG_NAME=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
 #echo "TAG_NAM=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
