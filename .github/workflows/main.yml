@@ -86,8 +86,8 @@ jobs:
      run: |
           ChangeLogVersion=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $ChangeLogVersion
-          echo "TAG_NAME=$ChangeLogVersion" >> $GITHUB_ENV
-          echo ${{env.TAG_NAME }}
+          echo "{TAG_NAME}={$ChangeLogVersion}" >> $GITHUB_ENV
+          echo "${{ env.TAG_NAME }}"
 
 #echo "TAG_NAME=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
 #echo "TAG_NAM=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
@@ -101,7 +101,7 @@ jobs:
      uses: docker://antonyurchenko/git-release:latest
      env:
        #GITHUB_TOKEN: ${{ secrets.token }}
-       RELEASE_NAME: ${{ env.TAG_NAME }}"
+       RELEASE_NAME: "${{ env.TAG_NAME }}"
        UNRELEASED: update
        PRE_RELEASE: true
        DRAFT_RELEASE: false
