@@ -87,20 +87,20 @@ jobs:
 
 # retrieve version
    - name: Retrieve version
-     id: random-color-generator
+     id: random-color-generator1
      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
      run: |
           ChangeLogVersion=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $ChangeLogVersion
-          echo "SELECTED_COLOR=$ChangeLogVersion" >> $GITHUB_OUTPUT
+          echo "SELECTED_COLOR1=$ChangeLogVersion" >> $GITHUB_OUTPUT
           echo "{TAG_NAME}={$ChangeLogVersion}" >> $GITHUB_ENV
           echo "action_state=yellow" >> $GITHUB_ENV        
           echo "${{ env.TAG_NAME }}"
           echo "${{ env.action_state }}" # This will output 'yellow'
           echo "VERSION=v$ChangeLogVersion" >> "$GITHUB_ENV"
           echo "${{ env.VERSION }}"
-          echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+          echo "The selected color is ${{ steps.random-color-generator1.outputs.SELECTED_COLOR1 }}"
 
 #echo "TAG_NAME=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
 #echo "TAG_NAM=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')" >> $GITHUB_ENV
