@@ -73,7 +73,7 @@ jobs:
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
 # This action checks CHANGELOG.md for current version of project
-# This version read from CHANGELOG.md file and added as tag
+# This version read from CHANGELOG.md file and added as tag 
    - name: Get_version_Changelog
      id: Get_version_Changelog
      run: |
@@ -82,7 +82,7 @@ jobs:
         echo "TAG_NAME: $TAG_NAME"
         echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_ENV"
 
-# retrieve version
+# retrieve version1
 #   - name: Retrieve version
 #     env:
 #       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
