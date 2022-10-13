@@ -21,21 +21,6 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-# enforce-changelog job is responsible to monitor the CHANGELOG.md file before pull-rquest to master
-# Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
-# this job compares existing CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
-  enforce-changelog:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2.3.4
-    - uses: dangoslen/changelog-enforcer@v2
-      with:
-        changeLogPath: 'CHANGELOG.md'
-        skipLabels: 'Skip-Changelog'
-        missingUpdateErrorMessage: >
-          Changelog Enforcer: No update to CHANGELOG.md found!
-          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
 
 # release job is responsible to release a pre-release version/tag with name "latest"
 # there are 4 steps in this Job
@@ -53,24 +38,6 @@ jobs:
 # Steps represent a sequence of tasks that will be executed as part of the job
    steps:
 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-   - name: checkout
-     uses: actions/checkout@v2
-
-   - name: Delete last Pre-Release
-     if: ( ! startsWith(github.ref, 'refs/tags/v'))
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "Latest"
-       UNRELEASED: delete
-       PRE_RELEASE: true
-       DRAFT_RELEASE: true
-     with:
-       args: download/*.zip
-
-# Delete the last "latest" release version tag (and not pre-released one) if exists
-   - name: Delete tag latest
-     if: ( ! startsWith(github.ref, 'refs/tags/v'))
-     run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
 # run a bash script
    - name: run a script to extract version
@@ -83,17 +50,16 @@ jobs:
      id: random-color-generator1
      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
-          echo "SELECTED_COLOR1=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md )" >> $GITHUB_OUTPUT           
-      
-   - name: Get color
-     run: echo "The selected color is ${{ steps.random-color-generator1.outputs.SELECTED_COLO1 }}"
+          echo "$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md )"     
 
 # retrieve version
    - name: Retrieve version
      id: random-color-generator2
      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
      run: |
           ChangeLogVersion=$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $ChangeLogVersion
@@ -111,28 +77,4 @@ jobs:
 #          echo "::set-env name=TAG_NAME::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')"
 #          echo "::set-env name=VERSION::$(grep -m1 '##' "${GITHUB_WORKSPACE}/CHANGELOG.md" | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}') "
 # create a new pre-Release version
-
-   - name: Pre-Release
-     if: (! startsWith(github.ref, 'refs/tags/v')) 
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       #GITHUB_TOKEN: ${{ secrets.token }}
-       RELEASE_NAME: "${{ env.TAG_NAME }}"
-       UNRELEASED: update
-       PRE_RELEASE: true
-       DRAFT_RELEASE: false
-     with:
-       args: download/*.zip
-
-# create a new released version
-   - name: Release
-     if: startsWith(github.ref, 'refs/tags/v')  
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "${{ env.TAG_NAME }}"
-       PRE_RELEASE: false
-       DRAFT_RELEASE: false
-     with:
-       args: download/*.zip
-        
 
