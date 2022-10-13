@@ -80,8 +80,8 @@ jobs:
         [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
         TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
         echo "TAG_NAME: $TAG_NAME"
-        echo "TAG_NAME: ${TAG_NAME:1:-1}"
-        echo "TAG_NAME=v$TAG_NAME" >> "$GITHUB_ENV"
+        echo "TAG_NAME1: ${TAG_NAME:1:-1}"
+        echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
 
 # retrieve version1
 #   - name: Retrieve version
@@ -97,7 +97,7 @@ jobs:
      uses: docker://antonyurchenko/git-release:latest
      env:
        #GITHUB_TOKEN: ${{ secrets.token }}
-       RELEASE_NAME: "${{ env.TAG_NAME }}"
+       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED: update
        PRE_RELEASE: true
        DRAFT_RELEASE: false
@@ -109,7 +109,7 @@ jobs:
      if: startsWith(github.event.ref, 'refs/tags/v')  
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME }}"
+       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
