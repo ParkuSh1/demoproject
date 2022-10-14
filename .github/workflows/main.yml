@@ -100,7 +100,7 @@ jobs:
 # create a new pre-Release version
    - name: Pre-Release
      if: (! startsWith(github.event.ref, 'refs/tags/v')) 
-     uses: docker://antonyurchenko/git-release:latest
+     uses: docker://antonyurchenko/git-release:"${{ env.TAG_NAME1 }}"
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED: update
@@ -112,7 +112,7 @@ jobs:
 # create a new released version
    - name: Release
      if: startsWith(github.event.ref, 'refs/tags/v')  
-     uses: docker://antonyurchenko/git-release:latest
+     uses: docker://antonyurchenko/git-release:"${{ env.TAG_NAME1 }}"
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: false
