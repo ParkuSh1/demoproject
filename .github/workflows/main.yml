@@ -57,7 +57,7 @@ jobs:
      uses: actions/checkout@v2
 
    - name: Delete last Pre-Release
-     if: ( ! startsWith(github.ref, 'refs/tags/v'))
+     if: (! startsWith(github.event.ref, 'refs/tags/v')) 
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "Latest"
