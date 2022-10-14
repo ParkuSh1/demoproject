@@ -1,7 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.5] - 2022-10-13 
+## [0.0.6] - 2022-10-13 
 
 
 ### Added 
@@ -9,7 +9,7 @@
 - ## [Unreleased]
 
 ### Changed
--  docker understanding
+-  check the change log has square bracket
 
 ### Fixed
 ### Removed
