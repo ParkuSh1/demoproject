@@ -1,8 +1,8 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.7] - 2022-10-13 
-## [Unreleased]
+## [v0.0.7] - 2022-10-13 
+
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
@@ -13,6 +13,7 @@
 - New seperate Unit "WeldFunctions" added for JC_Param 
 - JC_Pamrametr Program Nummer ist visible im Status Zeile 
 - Prog Nummer Änderung via GUI im Mapro erkannt
+- ## [Unreleased]
 ### Changed
 - Bootloader 1.15.4 via externals linked
 - S4-Config 0.20.1 via externals linked
@@ -41,6 +42,7 @@
 - New seperate Unit "WeldFunctions" added for JC_Param 
 - JC_Pamrametr Program Nummer ist visible im Status Zeile 
 - Prog Nummer Änderung via GUI im Mapro erkannt
+- ## [Unreleased]
 ### Changed
 - Bootloader 1.15.4 via externals linked
 - S4-Config 0.20.1 via externals linked
