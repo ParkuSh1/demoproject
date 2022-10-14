@@ -102,7 +102,6 @@ jobs:
      if: (! startsWith(github.event.ref, 'refs/tags/v')) 
      uses: docker://antonyurchenko/git-release:latest
      env:
-       #GITHUB_TOKEN: ${{ secrets.token }}
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED: update
        PRE_RELEASE: true
