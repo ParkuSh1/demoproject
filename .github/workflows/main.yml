@@ -96,7 +96,7 @@ jobs:
 #         echo "${{ env.TAG_NAME }}"
 
 #echo ::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
-# create a new pre-Release version
+# create a new pre-Release version 
    - name: Pre-Release
      if: (! startsWith(github.event.ref, 'refs/tags/v')) 
      uses: docker://antonyurchenko/git-release:latest
