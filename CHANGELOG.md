@@ -1,16 +1,27 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.6] - 2022-10-13 
+## [0.0.7] - 2022-10-13 
 
-
+## [Unreleased]
 ### Added 
-- push changed to pull request
-- ## [Unreleased]
-
+- FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
+- WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
+- ETH Status and WIFI_Status as StatusIcon Widget (derived)
+- List of Materials, wires and gases are available for weldprogram selection
+- welprograms are displayed with there Bitmap and Weldprog_ID
+- Control Parameters (JC_Param) can be managed and controlled between GUI<->Mapro 
+- New seperate Unit "WeldFunctions" added for JC_Param 
+- JC_Pamrametr Program Nummer ist visible im Status Zeile 
+- Prog Nummer Änderung via GUI im Mapro erkannt
 ### Changed
--  check the change log has square bracket
-
+- Bootloader 1.15.4 via externals linked
+- S4-Config 0.20.1 via externals linked
+- externals gitignore changed
+- Detailed Ethernet Status moved to Debug Mode 
+- Weldprograms Bitmap are now slelected with the Pic_ID insted of the ProzessType
+- Step size for Tacho is 0.1
+- Dynamic widget range is -10/+10
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
@@ -18,9 +29,9 @@
 - Touch Handler/Process Selection in Prozessauswahl screen anpassen
 
 
-## 0.36.0 - 2022-08-26 
+## [0.0.7] - 2022-08-26 
 
-## [Unreleased]
+
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
