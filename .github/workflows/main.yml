@@ -87,7 +87,6 @@ jobs:
           echo "TAG_NAME1: $TAG_NAME1"
           echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
         fi
-        
 
 # retrieve version1
 #   - name: Retrieve version
