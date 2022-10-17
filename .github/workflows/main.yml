@@ -29,13 +29,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
-    - uses: dangoslen/changelog-enforcer@v2
+    - id: read-version
+      run: |
+         echo "::set-output name=version::$(jq -r ".version" package.json)"
+
+    - uses: actions/checkout@v2.3.4
+    - uses: dangoslen/changelog-enforcer@v3
       with:
         changeLogPath: 'CHANGELOG.md'
         skipLabels: 'Skip-Changelog'
+        expectedLatestVersion: ${{ steps.read-version.outputs.tag }}
         missingUpdateErrorMessage: >
           Changelog Enforcer: No update to CHANGELOG.md found!
           Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
+
+
 
 # release job is responsible to release a pre-release version/tag with name "latest"
 # there are 4 steps in this Job
