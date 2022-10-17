@@ -9,8 +9,8 @@
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
--s4-COnfig Branch "Änderungen chn" noch nicht released deswegen wurde MW_ParameterModelObjects.ewu überschrieben
-- Touch Handler/Process Selection in Prozessauswahl screen anpassen
+- NFC-Thread-Verzögerung
+- S4-Config auf Version 18.0
 
 
 ## [0.36.0] - 2022-08-26
