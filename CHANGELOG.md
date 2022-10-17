@@ -5,13 +5,7 @@
 ### Added 
 - checking change enforce log action
 ### Changed
-- Bootloader 1.15.4 via externals linked1
-- S4-Config 0.20.1 via externals linked
-- externals gitignore changed
-- Detailed Ethernet Status moved to Debug Mode 
-- Weldprograms Bitmap are now slelected with the Pic_ID insted of the ProzessType
-- Step size for Tacho is 0.1
-- Dynamic widget range is -10/+10
+-  bug fix with docuker understanding with respect to changelog
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
