@@ -64,7 +64,7 @@ jobs:
        UNRELEASED: delete
        PRE_RELEASE: true
        DRAFT_RELEASE: true
-	   RELEASE_NAME_PREFIX: "v"
+       RELEASE_NAME_PREFIX: "v"
      with:
        args: download/*.zip
 
