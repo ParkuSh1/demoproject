@@ -119,7 +119,7 @@ jobs:
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: false
        DRAFT_RELEASE: false
-       TAG_PREFIX_REGEX:"[v]?"
+       TAG_PREFIX_REGEX:[v]?
      with:
        args: download/*.zip
 
