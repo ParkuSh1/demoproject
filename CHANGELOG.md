@@ -4,7 +4,6 @@
 ## [0.0.9] - 2022-10-17 
 ### Added 
 - checking change enforce log action
-
 ### Changed
 - Bootloader 1.15.4 via externals linked
 - S4-Config 0.20.1 via externals linked
