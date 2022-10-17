@@ -5,7 +5,7 @@
 ### Added 
 - checking change enforce log action
 ### Changed
-- Bootloader 1.15.4 via externals linked
+- Bootloader 1.15.4 via externals linked1
 - S4-Config 0.20.1 via externals linked
 - externals gitignore changed
 - Detailed Ethernet Status moved to Debug Mode 
