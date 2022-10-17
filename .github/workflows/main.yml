@@ -119,7 +119,6 @@ jobs:
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: false
        DRAFT_RELEASE: false
-       RELEASE_NAME_PREFIX:"v"
      with:
        args: download/*.zip
 
