@@ -56,17 +56,17 @@ jobs:
    - name: checkout
      uses: actions/checkout@v2
 
-   - name: Delete last Pre-Release
-     if: (!startsWith(github.event.ref, 'refs/tags/v')) 
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       RELEASE_NAME: "Latest"
-       UNRELEASED: delete
-       PRE_RELEASE: true
-       DRAFT_RELEASE: true
-     with:
-       args: download/*.zip
+#   - name: Delete last Pre-Release
+#     if: (!startsWith(github.event.ref, 'refs/tags/v')) 
+#     uses: docker://antonyurchenko/git-release:latest
+#     env:
+#       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       RELEASE_NAME: "Latest"
+#       UNRELEASED: delete
+#       PRE_RELEASE: true
+#       DRAFT_RELEASE: true
+#     with:
+#       args: download/*.zip
 
 # Delete the last "latest" release version tag (and not pre-released one) if exists
    - name: Delete tag latest
