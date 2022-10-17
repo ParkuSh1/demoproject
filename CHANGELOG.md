@@ -1,7 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [v0.0.7] - 2022-10-13 
+## [v0.0.8] - 2022-10-17 
 
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
