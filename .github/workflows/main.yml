@@ -60,11 +60,11 @@ jobs:
      if: (!startsWith(github.event.ref, 'refs/tags/v')) 
      uses: docker://antonyurchenko/git-release:latest
      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        RELEASE_NAME: "Latest"
        UNRELEASED: delete
        PRE_RELEASE: true
        DRAFT_RELEASE: true
-       RELEASE_NAME_PREFIX: "v"
      with:
        args: download/*.zip
 
