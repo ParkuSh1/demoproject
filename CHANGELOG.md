@@ -1,7 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.9] - 2022-10-17 
+## [v0.0.9] - 2022-10-17 
 ### Added 
 - checking change enforce log action
 ### Changed
