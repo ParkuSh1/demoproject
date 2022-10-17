@@ -114,12 +114,12 @@ jobs:
    - name: Release
 #     if: startsWith(github.event.ref, 'refs/tags/v')  
      uses: docker://antonyurchenko/git-release:latest
-     env:
-       TAG_PREFIX_REGEX:"[v]?"
+     env:       
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: false
        DRAFT_RELEASE: false
+       TAG_PREFIX_REGEX:"[v]?"
      with:
        args: download/*.zip
 
