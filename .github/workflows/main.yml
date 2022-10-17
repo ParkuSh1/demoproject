@@ -98,17 +98,17 @@ jobs:
 
 #echo ::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
 # create a new pre-Release version 
-   - name: Pre-Release
-     if: (! startsWith(github.event.ref, 'refs/tags/v')) 
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: update
-       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: true
-       DRAFT_RELEASE: false
-     with:
-       args: download/*.zip
+#   - name: Pre-Release
+#     if: (! startsWith(github.event.ref, 'refs/tags/v')) 
+#    uses: docker://antonyurchenko/git-release:latest
+ #    env:
+ #       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
+#       UNRELEASED: update
+#       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+#       PRE_RELEASE: true
+#       DRAFT_RELEASE: false
+#     with:
+#       args: download/*.zip
 
 # create a new released version
    - name: Release
