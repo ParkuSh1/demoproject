@@ -61,7 +61,7 @@ jobs:
 
    - name: Delete last Pre-Release
      if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
-     if: ${{ env.FirstCharcter != 'v' }}
+#     if: ${{ env.FirstCharcter != 'v' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "Latest"
