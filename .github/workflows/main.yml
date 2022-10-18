@@ -97,13 +97,11 @@ jobs:
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
 # create a new pre-released version
-   - name: Pre-Release
+   - name: Release
      if: (  startsWith(github.env.ref, 'refs/tags/v') )
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"       
-       PRE_RELEASE: false
-       DRAFT_RELEASE: false
      with:
        args: download/*.zip
 
