@@ -75,7 +75,7 @@ jobs:
         fi
 
    - name: Delete last Pre-Release
-     id: Get_version_Changelog
+     id: Deleter_last_prerelease
      run: |
         if [[ $firstCharacter != "v" || $firstCharacter != "V" ]]
         then
@@ -92,8 +92,8 @@ jobs:
         fi
 
 # Delete the last "latest" release version tag (and not pre-released one) if exists
-   - name: Delete last Pre-Release
-     id: Get_version_Changelog
+   - name: Delete last Pre-Release tag
+     id: Deleter_last_prereleasetag
      run: |
         if [[ $firstCharacter != "v" || $firstCharacter != "V" ]]
         then
