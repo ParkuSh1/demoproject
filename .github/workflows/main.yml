@@ -102,8 +102,8 @@ jobs:
      if: ${{ env.FirstCharcter == 'v' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+#       RELEASE_NAME: 0.0.9
+#       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
