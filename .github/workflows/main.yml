@@ -76,6 +76,8 @@ jobs:
           FirstCharcter=${TAG_NAME1:0:1}
           echo "FirstCharcter: $FirstCharcter"
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
         fi
 
    - name: Delete last Pre-Release
