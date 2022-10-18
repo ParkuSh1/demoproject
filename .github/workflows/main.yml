@@ -56,22 +56,6 @@ jobs:
    - name: checkout
      uses: actions/checkout@v2
 
-   - name: Delete last Pre-Release
-     if: ( ! startsWith(github.ref, 'refs/tags/v'))
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "Latest"
-       UNRELEASED: delete
-       PRE_RELEASE: true
-       DRAFT_RELEASE: true
-     with:
-       args: download/*.zip
-
-# Delete the last "latest" release version tag (and not pre-released one) if exists
-   - name: Delete tag latest
-     if: ( ! startsWith(github.ref, 'refs/tags/v'))
-     run: (git tag -d latest && git push origin :refs/tags/latest) || true
-
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and send as a release name 
    - name: Get_version_Changelog
@@ -86,7 +70,37 @@ jobs:
           TAG_NAME1=${TAG_NAME:1:-1}
           echo "TAG_NAME1: $TAG_NAME1"
           echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
+          firstCharacter=${TAG_NAME1:0:1}
+          echo $firstCharacter
         fi
+
+   - name: Delete last Pre-Release
+     id: Get_version_Changelog
+     run: |
+        if [[ $firstCharacter != "v" || $firstCharacter != "V" ]]
+        then
+          uses: docker://antonyurchenko/git-release:latest
+          env:
+           RELEASE_NAME: "Latest"
+           UNRELEASED: delete
+           PRE_RELEASE: true
+           DRAFT_RELEASE: true
+         with:
+          args: download/*.zip
+        else
+         echo " ok " 
+        fi
+
+# Delete the last "latest" release version tag (and not pre-released one) if exists
+   - name: Delete last Pre-Release
+     id: Get_version_Changelog
+     run: |
+        if [[ $firstCharacter != "v" || $firstCharacter != "V" ]]
+        then
+           (git tag -d latest && git push origin :refs/tags/latest) || true
+        else
+         echo " ok1 " 
+        fi	
 
 # create a new pre-released version
    - name: Pre-Release
