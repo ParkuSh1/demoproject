@@ -2,6 +2,8 @@
 [//]: <> (Latest version number for doxygen action)
 
 ## [0.0.8] - 2022-10-17 
+## Unrelease 
+
 ### Added 
 - checking change enforce log action
 ### Changed
@@ -12,6 +14,16 @@
 - NFC-Thread-Verzögerung
 - S4-Config auf Version 18.0
 
+## [0.0.8] - 2022-10-17 
+### Added 
+- checking change enforce log action
+### Changed
+-  bug fix with docuker understanding with respect to changelog
+### Fixed
+### Removed
+### TODO / LIMITATIONS
+- NFC-Thread-Verzögerung
+- S4-Config auf Version 18.0
 
 ## [0.36.0] - 2022-08-26
 ### Added 
