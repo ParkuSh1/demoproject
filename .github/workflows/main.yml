@@ -73,11 +73,15 @@ jobs:
           TAG_NAME1=${TAG_NAME:1:-1}
           echo "TAG_NAME1: $TAG_NAME1"
           echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
+          FirstCharcter=${TAG_NAME1:1:1}
+          echo "FirstCharcter: $FirstCharcter"
+          echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
         fi
 
    - name: Delete last Pre-Release
 #      if: (!startsWith(github.ref, 'refs/tags/v'))
-     if: ( ! startsWith(github.env.ref, 'refs/tags/v'))
+#     if: ( ! startsWith(github.env.ref, 'refs/tags/v'))
+#     if: ${{ env.DAY_OF_WEEK == 'Monday' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "Latest"
