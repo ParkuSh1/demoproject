@@ -78,6 +78,13 @@ jobs:
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
         fi
 
+# This is to export major, minor and patch version from changelog
+   - name: Prepare Version Tags
+     run: |
+          echo "MAJOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
+          echo "MINOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
+          echo "PATCH=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
+
    - name: Delete last Pre-Release
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      if: ${{ env.FirstCharcter != 'v' }}
@@ -99,7 +106,7 @@ jobs:
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
-     if: ${{ env.FirstCharcter == 'v' }}
+#     if: ${{ env.FirstCharcter == 'v' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
