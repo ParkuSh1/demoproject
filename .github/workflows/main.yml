@@ -73,7 +73,8 @@ jobs:
         fi
 
    - name: Delete last Pre-Release
-     if: ( ! startsWith(github.env.ref, 'refs/tags/v'))
+     if: !startsWith(github.ref, 'refs/tags/v')
+#     if: ( ! startsWith(github.env.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "Latest"
