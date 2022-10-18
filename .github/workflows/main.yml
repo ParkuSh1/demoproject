@@ -94,6 +94,12 @@ jobs:
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
+# create a tag
+   - name: tag create
+     if: ${{ env.FirstCharcter == 'v' }}
+#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
+     run: (git tag ${{ env.TAG_NAME1 }}) 
+
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
