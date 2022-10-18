@@ -59,30 +59,8 @@ jobs:
      run: |
           echo "[C] github.ref: ${{github.ref}}"
 
-# This action checks CHANGELOG.md for current version of project
-# This version read from CHANGELOG.md file and send as a release name 
-   - name: Get_version_Changelog
-     id: Get_version_Changelog
-     run: |
-        [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
-        TAG_NAME=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2 )
-        if [[ $TAG_NAME != *[{}\(\)\[\]]* ]]  
-        then
-          echo "::error::File CHANGELOG.md version without square bracket!" && false
-        else
-          TAG_NAME1=${TAG_NAME:1:-1}
-          echo "TAG_NAME1: $TAG_NAME1"
-          echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
-          FirstCharcter=${TAG_NAME1:0:1}
-          echo "FirstCharcter: $FirstCharcter"
-          echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
-          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
-        fi
-
    - name: Delete last Pre-Release
-#      if: (!startsWith(github.ref, 'refs/tags/v'))
-#     if: ( ! startsWith(github.env.ref, 'refs/tags/v'))
+     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      if: ${{ env.FirstCharcter != 'v' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
@@ -95,13 +73,14 @@ jobs:
 
 # Delete the last "latest" release version tag (and not pre-released one) if exists
    - name: Delete tag latest
-     if: ( ! startsWith(github.env.ref, 'refs/tags/v'))
+     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
-     if: ${{ env.FirstCharcter == 'v' }}
+#     if: ${{ env.FirstCharcter == 'v' }}
+     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
 #       RELEASE_NAME: 0.0.9
