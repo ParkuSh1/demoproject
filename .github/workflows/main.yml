@@ -99,7 +99,7 @@ jobs:
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
-      if: ${{ env.FirstCharcter == 'v' }}
+     if: ${{ env.FirstCharcter == 'v' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
@@ -112,7 +112,7 @@ jobs:
 # create a new pre-released version
    - name: Pre-Release
 #     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
-      if: ${{ env.FirstCharcter != 'v' }}
+     if: ${{ env.FirstCharcter != 'v' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
