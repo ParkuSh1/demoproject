@@ -103,7 +103,7 @@ jobs:
      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-        UNRELEASED: delete
+        UNRELEASED: update
         UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
         PRE_RELEASE: false
         DRAFT_RELEASE: false
