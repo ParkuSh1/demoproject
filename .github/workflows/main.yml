@@ -103,7 +103,6 @@ jobs:
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
-       TAG_PREFIX_REGEX:*
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED: update
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
