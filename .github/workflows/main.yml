@@ -113,7 +113,7 @@ jobs:
 # create a new released version
       - run: |
           export PREFIX="Release: "
-		  export RELEASE_NAME="${{ env.TAG_NAME1 }}"
+          export RELEASE_NAME="${{ env.TAG_NAME1 }}"
           export SUFFIX=" (Codename: 'Ragnarok')"
           echo "::set-env name=RELEASE_NAME_PREFIX::$PREFIX"
           echo "::set-env name=RELEASE_NAME_SUFFIX::$SUFFIX"
