@@ -13,6 +13,8 @@ name: demoproject Workflow
 # events but only for the master branch demo
 on:
   push:
+   tags:
+        - "*"
     branches: 
         - main
 env:
