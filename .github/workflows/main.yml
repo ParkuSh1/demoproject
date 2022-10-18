@@ -101,8 +101,7 @@ jobs:
      if: (  startsWith(github.env.ref, 'refs/tags/v') )
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+       RELEASE_NAME: "${{ env.TAG_NAME1 }}"       
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
