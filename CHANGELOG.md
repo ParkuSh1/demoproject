@@ -1146,9 +1146,3 @@ USB - Erste Umsetzung
 - Erster Tastendruck aktiviert die Tastatur
 - Die keypress wird angezeigt auf ARM semihosting console 
 - Ein keypress nach dem anderen (Muss angepasst werden, um den kompletten String von Scanner zu lesen)
-
----------------------------------------------------------------------
-
-[Unreleased]: 
-[0.2.0]: https://dev.azure.com/stephangeisser/HMI_Projekt/_git/HMI_Projekt/commit/7f56d588227e9eb8f00ef0b9a5b607f19be17e7f?refName=refs%2Fheads%2Fusb-treiber
-[0.1.0]: https://dev.azure.com/stephangeisser/HMI_Projekt/_git/HMI_Projekt/commit/f49a3b6567a18c53ef2d3610878dbf83ac65169f?refName=refs%2Fheads%2Fusb-treiber
