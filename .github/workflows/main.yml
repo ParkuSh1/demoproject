@@ -84,8 +84,6 @@ jobs:
      env:
        RELEASE_NAME: "Latest"
        UNRELEASED: delete
-       PRE_RELEASE: true
-       DRAFT_RELEASE: true
      with:
        args: download/*.zip
 
