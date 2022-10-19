@@ -75,13 +75,6 @@ jobs:
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           env
         fi
-
-# create a download.zip and upload to assert folder
-   - name: Zip download directory
-     working-directory: ${{ github.workspace }}/download
-     run: |
-        for i in */; do zip -r "${i%/}.zip" "$i"; done
-
 # create a new released version
    - name:  Release
      if: ${{ env.FirstCharcter == 'v' }}
