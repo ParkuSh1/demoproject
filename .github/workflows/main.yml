@@ -82,7 +82,7 @@ jobs:
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+		TAG_PREFIX_REGEX: "v"
         PRE_RELEASE: false
         DRAFT_RELEASE: false
      with:
