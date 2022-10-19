@@ -76,13 +76,24 @@ jobs:
           env
         fi
 
-# This action checks CHANGELOG.md for current version of project
-# This version read from CHANGELOG.md file and send as a release name 
-   - name: Prepare Version Tags
-     run: |
-         echo "MAJOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
-         echo "MINOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
-         echo "PATCH=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
+#delete the last pre release
+   - name: Delete last Pre-Release
+#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
+     if: ${{ env.FirstCharcter != 'v' }}
+     uses: docker://antonyurchenko/git-release:latest
+     env:
+       RELEASE_NAME: "Latest"
+       UNRELEASED: delete
+       PRE_RELEASE: true
+       DRAFT_RELEASE: true
+     with:
+       args: download/*.zip
+
+# Delete the last "latest" release version tag (and not pre-released one) if exists
+   - name: Delete tag latest
+     if: ${{ env.FirstCharcter != 'v' }}
+#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
+     run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
 # create a new released version
    - name:  Release
@@ -93,7 +104,6 @@ jobs:
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       TAG_PREFIX_REGEX: ""
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
