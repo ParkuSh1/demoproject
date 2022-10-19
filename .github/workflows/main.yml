@@ -54,7 +54,7 @@ jobs:
    steps:
 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
    - name: checkout
-     uses: actions/checkout@v3
+     uses: actions/checkout@v2
 
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and send as a release name 
@@ -95,6 +95,7 @@ jobs:
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
+
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
@@ -104,6 +105,7 @@ jobs:
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+       UNRELEASED: update
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
