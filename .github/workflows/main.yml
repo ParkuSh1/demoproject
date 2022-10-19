@@ -75,26 +75,6 @@ jobs:
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           env
         fi
-
-#delete the last pre release
-   - name: Delete last Pre-Release
-#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
-     if: ${{ env.FirstCharcter != 'v' }}
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "Latest"
-       UNRELEASED: delete
-       PRE_RELEASE: true
-       DRAFT_RELEASE: true
-     with:
-       args: download/*.zip
-
-# Delete the last "latest" release version tag (and not pre-released one) if exists
-   - name: Delete tag latest
-     if: ${{ env.FirstCharcter != 'v' }}
-#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
-     run: (git tag -d latest && git push origin :refs/tags/latest) || true
-
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
@@ -110,15 +90,15 @@ jobs:
      with:
        args: download/*.zip
 # create a new pre-released version
-   - name:  prerelease
+   - name: Pre-Release
+#     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter != 'v' }}
-     uses: softprops/action-gh-release@v1
-     with:
-       body_path: ${{ github.workspace }}/CHANGELOG.md
-       prerelease: true
-       draft: false       
-       tag_name: "${{ env.TAG_NAME1 }}"
-       name: "${{ env.TAG_NAME1 }}"
-       files: ${{ github.workspace }}/download/*.zip
+     uses: docker://antonyurchenko/git-release:latest
      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
+       UNRELEASED: update
+       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+       PRE_RELEASE: true
+       DRAFT_RELEASE: false
+     with:
+       args: download/*.zip
