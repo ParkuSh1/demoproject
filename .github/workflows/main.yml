@@ -75,6 +75,26 @@ jobs:
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           env
         fi
+
+#delete the last pre release
+   - name: Delete last Pre-Release
+#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
+     if: ${{ env.FirstCharcter != 'v' }}
+     uses: docker://antonyurchenko/git-release:latest
+     env:
+       RELEASE_NAME: "Latest"
+       UNRELEASED: delete
+       PRE_RELEASE: true
+       DRAFT_RELEASE: true
+     with:
+       args: download/*.zip
+
+# Delete the last "latest" release version tag (and not pre-released one) if exists
+   - name: Delete tag latest
+     if: ${{ env.FirstCharcter != 'v' }}
+#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
+     run: (git tag -d latest && git push origin :refs/tags/latest) || true
+
 # create a new released version
    - name:  Release
      if: ${{ env.FirstCharcter == 'v' }}
