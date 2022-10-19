@@ -86,8 +86,8 @@ jobs:
 
 # create a new released version
    - name:  Release
-#     if: (  startsWith(github.env.ref, 'refs/tags/v') )
-     if: ${{ env.FirstCharcter == 'v' }}
+     if: (  startsWith(github.env.ref, 'refs/tags/v') )
+#     if: ${{ env.FirstCharcter == 'v' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
