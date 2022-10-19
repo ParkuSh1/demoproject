@@ -79,7 +79,7 @@ jobs:
 #delete the last pre release
    - name: Delete last Pre-Release
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
-     if: ${{ env.FirstCharcter != 'v' }}
+     if: ${{ env.FirstCharcter == 'v' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "Latest"
@@ -91,7 +91,7 @@ jobs:
 
 # Delete the last "latest" release version tag (and not pre-released one) if exists
    - name: Delete tag latest
-     if: ${{ env.FirstCharcter != 'v' }}
+     if: ${{ env.FirstCharcter == 'v' }}
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
