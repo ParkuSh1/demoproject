@@ -1,7 +1,21 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [v0.0.9] - 2022-10-17 
+## [0.0.9] - 2022-10-17 
+
+## [Unreleased]
+### Added 
+- checking change enforce log action
+- [kkUnreleased---]
+### Changed
+-  bug fix with docuker understanding with respect to changelog1
+### Fixed
+### Removed
+### TODO / LIMITATIONS
+- NFC-Thread-Verzögerung
+- S4-Config auf Version 18.0
+
+## [0.0.9] - 2022-10-17 
 ### Added 
 - checking change enforce log action
 - [kkUnreleased---]
