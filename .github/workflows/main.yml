@@ -110,15 +110,14 @@ jobs:
      with:
        args: download/*.zip
 # create a new pre-released version
-   - name: Pre-Release
-#     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
+   - name:  prerelease
      if: ${{ env.FirstCharcter != 'v' }}
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: update
-       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: true
-       DRAFT_RELEASE: false
+     uses: softprops/action-gh-release@v1
      with:
-       args: download/*.zip
+       prerelease: true
+       draft: false       
+       tag_name: "${{ env.TAG_NAME1 }}"
+       name: "${{ env.TAG_NAME1 }}"
+       files: ${{ github.workspace }}/download/*.zip
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
