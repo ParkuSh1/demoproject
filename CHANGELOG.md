@@ -14,18 +14,6 @@
 - NFC-Thread-Verzögerung
 - S4-Config auf Version 18.0
 
-## [v0.0.2] - 2022-10-19
-### Added 
-- checking change enforce log action pre-release check
-- [kkUnreleased---]
-### Changed
--  bug fix with docuker understanding with respect to changelog1
-### Fixed
-### Removed
-### TODO / LIMITATIONS
-- NFC-Thread-Verzögerung
-- S4-Config auf Version 18.0
-
 ## [0.36.0] - 2022-08-26
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
