@@ -54,7 +54,7 @@ jobs:
    steps:
 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
    - name: checkout
-     uses: actions/checkout@v2
+     uses: actions/checkout@v3
 
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and send as a release name 
@@ -75,6 +75,15 @@ jobs:
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           env
         fi
+
+# This action checks CHANGELOG.md for current version of project
+# This version read from CHANGELOG.md file and send as a release name 
+   - name: Prepare Version Tags
+     run: |
+         echo "MAJOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1}')" >> $GITHUB_ENV
+         echo "MINOR=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2}')" >> $GITHUB_ENV
+         echo "PATCH=$(echo ${GITHUB_REF/refs\/tags\//} | awk -F'.' '{print $1"."$2"."$3}')" >> $GITHUB_ENV
+
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
