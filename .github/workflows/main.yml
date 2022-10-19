@@ -93,7 +93,7 @@ jobs:
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       TAG_PREFIX_REGEX: "[v]?"
+       TAG_PREFIX_REGEX: ""
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
