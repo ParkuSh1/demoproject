@@ -1,5 +1,5 @@
 # Workflow for demoproject .
-# Author - Sagar Chande (CHN), Lorch Schweisstechnik GmbH
+# Author - Sagar Chande (CHN), 
 # This workflow contains a multiple jobs called "enforce-changelog", "release" and "doxygen"
 # "enforce-changelog" job needs git event as "pull-request" to master
 # "doxygen" job depends on succesful running of "release" job
@@ -82,9 +82,12 @@ jobs:
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
-        TAG_PREFIX_REGEX: "[v]?"
-        PRE_RELEASE: false
-        DRAFT_RELEASE: false
+       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
+       UNRELEASED: update
+       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+       TAG_PREFIX_REGEX: "[v]?"
+       PRE_RELEASE: false
+       DRAFT_RELEASE: false
      with:
        args: download/*.zip
 # create a new pre-released version
