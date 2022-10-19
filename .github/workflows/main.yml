@@ -105,9 +105,9 @@ jobs:
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: update
-       PRE_RELEASE: false
-       DRAFT_RELEASE: false
+       UNRELEASED: "update"
+       PRE_RELEASE: "false"
+       DRAFT_RELEASE: "false"
      with:
        args: download/*.zip
 # create a new pre-released version
@@ -117,9 +117,9 @@ jobs:
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: update
+       UNRELEASED: "update"
        UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: true
-       DRAFT_RELEASE: false
+       PRE_RELEASE: "true"
+       DRAFT_RELEASE: "false"
      with:
        args: download/*.zip
