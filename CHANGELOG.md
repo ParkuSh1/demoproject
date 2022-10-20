@@ -10,7 +10,7 @@
 - proper study checking version release
 ### Changed
 -  using create release docker for release action
--  checking latest tag
+-  checking latest tag cgeck
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
