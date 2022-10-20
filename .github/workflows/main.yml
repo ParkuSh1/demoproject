@@ -115,7 +115,7 @@ jobs:
      id: changelog_reader
      uses: mindsers/changelog-reader-action@v2
      with:
-         version: "${{ steps.read-version.outputs.tag }}"
+         version: "${{ env.TAG_NAME1 }}"
          path: ./CHANGELOG.md
 
 # create a new released version
