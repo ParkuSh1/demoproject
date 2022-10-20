@@ -2,7 +2,7 @@
 [//]: <> (Latest version number for doxygen action)
 
 
-## [0.0.7] - 2022-10-20
+## [0.0.8] - 2022-10-20
 ## [Unreleased]
 ### Added 
 - checking change enforce log action pre-release check
@@ -18,7 +18,7 @@
 - NFC-Thread-Verzögerung
 - S4-Config auf Version 18.0
 
-## [0.0.7] - 2022-10-20
+## [0.0.8] - 2022-10-20
 ### Added 
 - checking change enforce log action pre-release check
 - removed [kkUnreleased---] checking
