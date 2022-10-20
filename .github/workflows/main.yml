@@ -102,7 +102,7 @@ jobs:
      if: ${{ env.FirstCharcter != 'v' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "Latest"
+#       RELEASE_NAME: "Latest"
        UNRELEASED: delete
      with:
        args: download/*.zip
@@ -111,7 +111,7 @@ jobs:
    - name: Delete tag latest
      if: ${{ env.FirstCharcter != 'v' }}
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
-     run: (git tag -d latest && git push origin :refs/tags/latest) || true
+     run: (git tag -d "${{ env.UNRELEASED_TAG }}" && git push origin :refs/tags/latest) || true
 
 # read changelog entry for version
    - name: read changelog entry for version
