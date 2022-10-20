@@ -5,13 +5,13 @@
 ## [v0.0.3] - 2022-10-20
 ### Added 
 - checking change enforce log action pre-release check
-- removed [kkUnreleased---] checking
+- removed [] checking
 - proper study checking version release
 - changed the yml file enforce change log
 ### Changed
 -  using create release docker for release action
 -  checking latest tag cgeck
--  modified based on unrelease word
+-  modified based on word
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
