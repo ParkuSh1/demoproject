@@ -127,8 +127,8 @@ jobs:
      env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
-       tag_name: "${{ steps.read-version.outputs.tag }}"
-       release_name: "${{ steps.read-version.outputs.version }}"
+       tag_name: "${{ env.TAG_NAME1 }}"
+       release_name: "${{ env.TAG_NAME1 }}"
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
        prerelease: false
