@@ -28,7 +28,8 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-     - id: read-version
+     - name: read-version
+       id: read-version
        run: |
           echo "::set-output name=version::$(jq -r ".version" package.json)"
           echo "::set-output name=tag::v$(jq -r ".version" package.json)"
