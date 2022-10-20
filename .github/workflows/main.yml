@@ -76,8 +76,6 @@ jobs:
 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
    - name: checkout
      uses: actions/checkout@v2
-#  - id: read-version
-#     run: echo "{version}={0.0.2}" >> $GITHUB_OUTPUT
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and send as a release name 
    - name: Get_version_Changelog
@@ -115,6 +113,7 @@ jobs:
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
+# read changelog entry for version
    - name: read changelog entry for version
      id: changelog_reader
      uses: mindsers/changelog-reader-action@v2
