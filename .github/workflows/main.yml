@@ -93,12 +93,6 @@ jobs:
           FirstCharcter=${TAG_NAME1:0:1}
           echo "FirstCharcter: $FirstCharcter"
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
-          if grep -Ril "Unreleased" CHANGELOG.md 
-          then
-              UnrelCharcter=true
-              echo "UnrelCharcter:$UnrelCharcter"
-              echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
-          fi
 #          env
         fi
 
