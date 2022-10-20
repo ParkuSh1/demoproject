@@ -44,7 +44,6 @@ jobs:
     steps:
     - name: changelogreader
       uses: dangoslen/changelog-enforcer@v2
-      run: echo "{version}={0.0.2}" >> $GITHUB_OUTPUT
       with:
         changeLogPath: 'CHANGELOG.md'
         skipLabels: 'Skip-Changelog'
