@@ -108,8 +108,7 @@ jobs:
 #delete the last pre release
    - name: Delete last Pre-Release
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
-     if: ${{ env.FirstCharcter != 'v' }}
-     if: ${{ env.UnrelCharcter == 'true' }}
+     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "Latest"
@@ -119,8 +118,7 @@ jobs:
 
 # Delete the last "latest" release version tag (and not pre-released one) if exists
    - name: Delete tag latest
-     if: ${{ env.FirstCharcter != 'v' }}
-     if: ${{ env.UnrelCharcter == 'true' }}
+     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
@@ -135,8 +133,7 @@ jobs:
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
-     if: ${{ env.FirstCharcter == 'v' }}
-     if: ${{ env.UnrelCharcter != 'true' }}
+     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: actions/create-release@v1.1.4
      env:
@@ -151,8 +148,7 @@ jobs:
 # create a new pre-released version
    - name: Pre-Release
 #     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
-     if: ${{ env.FirstCharcter != 'v' }}
-     if: ${{ env.UnrelCharcter == 'true' }}
+     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
