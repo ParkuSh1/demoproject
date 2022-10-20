@@ -21,6 +21,11 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
+     - name: read-version
+       id: read-version
+       run: |
+          echo "::set-output name=version::$(jq -r ".version" package.json)"
+          echo "::set-output name=tag::v$(jq -r ".version" package.json)"
 # enforce-changelog job is responsible to monitor the CHANGELOG.md file before pull-rquest to master
 # Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
 # this job compares existing CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
@@ -28,12 +33,6 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-     - name: read-version
-       id: read-version
-       run: |
-          echo "::set-output name=version::$(jq -r ".version" package.json)"
-          echo "::set-output name=tag::v$(jq -r ".version" package.json)"
-
     - uses: actions/checkout@v2.3.4
     - uses: dangoslen/changelog-enforcer@v2
       with:
