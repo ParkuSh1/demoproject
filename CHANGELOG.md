@@ -2,7 +2,7 @@
 [//]: <> (Latest version number for doxygen action)
 
 
-## [v0.0.4] - 2022-10-20
+## [0.0.4] - 2022-10-20
 ### Added 
 - checking change enforce log action pre-release check
 - removed [kkUnreleased---] checking
