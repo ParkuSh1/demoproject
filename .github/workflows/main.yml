@@ -94,7 +94,7 @@ jobs:
           echo "FirstCharcter: $FirstCharcter"
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           if grep -Ril "Unreleased" CHANGELOG.md 
-		  then
+          then
               UnrelCharcter=true
               echo "UnrelCharcter:$UnrelCharcter"
               echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
