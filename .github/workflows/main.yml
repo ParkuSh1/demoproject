@@ -55,8 +55,7 @@ jobs:
    - name: checkout
      uses: actions/checkout@v2
    - id: read-version
-     run: |
-       echo "::set-output name=version::0.0.2"
+     run: echo "{version}={0.0.2}" >> $GITHUB_OUTPUT
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and send as a release name 
    - name: Get_version_Changelog
