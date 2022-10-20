@@ -162,6 +162,7 @@ jobs:
        DRAFT_RELEASE: "false"
      with:
        args: download/*.zip
+
 # run a bash script
   - name: run a script to extract version
     run: |
