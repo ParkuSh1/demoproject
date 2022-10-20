@@ -31,7 +31,7 @@ jobs:
     - uses: dangoslen/changelog-enforcer@v2
     - id: read-version
       run: |
-        echo "::set-output name=version::$(jq -r ".version" package.json)"
+        echo "::set-output name=version::0.0.2"
     - id: changelog-Enforcer
       uses: ./
       with:
