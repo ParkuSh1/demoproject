@@ -100,7 +100,7 @@ jobs:
               echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           else
               UnrelCharcter=false
-			  echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
+              echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
               FirstCharcter=${TAG_NAME1:0:1}
               echo "FirstCharcter: $FirstCharcter"
               echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
