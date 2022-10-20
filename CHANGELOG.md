@@ -6,7 +6,8 @@
 ## [Unreleased]
 ### Added 
 - checking change enforce log action pre-release check
-- [kkUnreleased---]
+- removed [kkUnreleased---] checking
+- proper study
 ### Changed
 -  bug fix with docuker understanding with respect to changelog1
 ### Fixed
