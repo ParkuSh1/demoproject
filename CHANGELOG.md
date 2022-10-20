@@ -3,7 +3,6 @@
 
 
 ## [v0.0.3] - 2022-10-20
-## [Unreleased]
 ### Added 
 - checking change enforce log action pre-release check
 - removed [kkUnreleased---] checking
@@ -13,20 +12,6 @@
 -  using create release docker for release action
 -  checking latest tag cgeck
 -  modified based on unrelease word
-### Fixed
-### Removed
-### TODO / LIMITATIONS
-- NFC-Thread-Verzögerung
-- S4-Config auf Version 18.0
-
-## [v0.0.3] - 2022-10-20
-### Added 
-- checking change enforce log action pre-release check
-- removed [kkUnreleased---] checking
-- proper study checking version release
-- changed the yml file enforce change log
-### Changed
--  bug fix with docuker understanding with respect to changelog1
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
