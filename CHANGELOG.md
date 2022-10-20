@@ -2,7 +2,7 @@
 [//]: <> (Latest version number for doxygen action)
 
 
-## [0.0.10] - 2022-10-20
+## [0.0.11] - 2022-10-20
 ## [Unreleased]
 ### Added 
 - checking change enforce log action pre-release check
@@ -12,6 +12,7 @@
 ### Changed
 -  using create release docker for release action
 -  checking latest tag cgeck
+-  modified based on unrelease word
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
