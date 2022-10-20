@@ -111,19 +111,27 @@ jobs:
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
+   - name: read changelog entry for version
+     id: changelog_reader
+     uses: mindsers/changelog-reader-action@v2
+     with:
+         version: "${{ steps.read-version.outputs.tag }}"
+         path: ./CHANGELOG.md
 
 # create a new released version
    - name:  Release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter == 'v' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
-     uses: docker://antonyurchenko/git-release:latest
+     uses: actions/create-release@v1.1.4
      env:
-       RELEASE_NAME: "${{ steps.read-version.outputs.tag }}"
-       TAG_PREFIX_REGEX: "[v]?"
-       PRE_RELEASE: "false"
-       DRAFT_RELEASE: "false"
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
+       tag_name: "${{ steps.read-version.outputs.tag }}"
+       release_name: "${{ steps.read-version.outputs.version }}"
+       body: ${{ steps.changelog_reader.outputs.changes }} 
+       draft: false
+       prerelease: false
        args: download/*.zip
 # create a new pre-released version
    - name: Pre-Release
