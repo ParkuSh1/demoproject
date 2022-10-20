@@ -157,8 +157,14 @@ jobs:
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        UNRELEASED: "update"
-#       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+#      UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: "true"
        DRAFT_RELEASE: "false"
      with:
        args: download/*.zip
+
+# run a bash script
+  - name: run a script to extract version
+    run: |
+         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}  

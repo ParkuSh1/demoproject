@@ -3,16 +3,46 @@
 #set "projectdir=$1"
 echo $1
 
-str='some text with in it'
-if [[ $str == *['!'@#\$%^\&*()_+]* ]]
+Version=$(grep -m1 '##' $1/CHANGELOG.md | \
+  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+echo $Version
+
+if [[ $Version != *[{}\(\)\[\]]* ]]  
 then
-  echo "It contains one of those"
+  echo "::error::File CHANGELOG.md version without square bracket!" && false
+else
+  Version1=${Version:1:-1}
+  echo "Version1: $Version1"
 fi
 
-ChangeLogVersion=$(grep -m1 '##' $1/CHANGELOG.md | \
-  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+DateVersion=$(grep -m1 '##' $1/CHANGELOG.md | \
+  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+3)}')
+echo $DateVersion
 
-echo $ChangeLogVersion
+binextn=".bin"
+sbuextn=".sfb"
+unscore="_"
+filenamesfb="FW-HMI_09_0_"
+filenamebin="FW-HMI_09_1_"
+
+
+filenamebin+=$DateVersion
+filenamebin+=$unscore
+filenamebin+=$Version1
+filenamebin+=$binextn
+
+filenamesfb+=$DateVersion
+filenamesfb+=$unscore
+filenamesfb+=$Version1
+filenamesfb+=$sbuextn
+    
+echo $filenamebin
+echo $filenamesfb
+
+cp $1/Binary/$filenamebin $1/HMI_FW/$filenamebin
+cp $1/Binary/$filenamesfb $1/HMI_FW/$filenamesfb
+
+$zip -m $1/HMI_FW/FW-HMI.zip $1/HMI_FW/$filenamebin $1/HMI_FW/$filenamesfb
 
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
