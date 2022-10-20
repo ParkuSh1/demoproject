@@ -135,7 +135,7 @@ jobs:
          path: ./CHANGELOG.md
 
 # create a new released version
-   - name:  Release
+   - name:  Release1
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
@@ -164,8 +164,8 @@ jobs:
        args: download/*.zip
 
 # run a bash script
-  - name: run a script to extract version
-    run: |
-      chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-      bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}  
+   - name: script run 
+     run: |
+        chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+        bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}  
 
