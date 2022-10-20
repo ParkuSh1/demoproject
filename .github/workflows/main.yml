@@ -33,7 +33,6 @@ jobs:
       run: |
         echo "::set-output name=version::0.0.2"
     - id: changelog-Enforcer
-      uses: ./
       with:
         changeLogPath: 'CHANGELOG.md'
         skipLabels: 'Skip-Changelog'
