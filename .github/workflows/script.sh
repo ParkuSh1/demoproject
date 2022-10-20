@@ -39,10 +39,10 @@ filenamesfb+=$sbuextn
 echo $filenamebin
 echo $filenamesfb
 
-cp $1/Binary/$filenamebin $1/HMI_FW/$filenamebin
-cp $1/Binary/$filenamesfb $1/HMI_FW/$filenamesfb
+cp $1//Binary//$filenamebin $1//HMI_FW//$filenamebin
+cp $1/Binary//$filenamesfb $1//HMI_FW//$filenamesfb
 
-$zip -m $1/HMI_FW/FW-HMI.zip $1/HMI_FW/$filenamebin $1/HMI_FW/$filenamesfb
+$zip -m $1//HMI_FW/FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
 
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
