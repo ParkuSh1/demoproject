@@ -24,17 +24,12 @@ jobs:
 # Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
 # this job compares existing CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
   enforce-changelog:
-   if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2.3.4
-         run: echo "{version}={0.0.2}" >> $GITHUB_OUTPUT
-
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
     - uses: dangoslen/changelog-enforcer@v2
+      run: echo "{version}={0.0.2}" >> $GITHUB_OUTPUT
       with:
         changeLogPath: 'CHANGELOG.md'
         skipLabels: 'Skip-Changelog'
@@ -60,7 +55,7 @@ jobs:
 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
    - name: checkout
      uses: actions/checkout@v2
-#   - id: read-version
+#  - id: read-version
 #     run: echo "{version}={0.0.2}" >> $GITHUB_OUTPUT
 # This action checks CHANGELOG.md for current version of project
 # This version read from CHANGELOG.md file and send as a release name 
