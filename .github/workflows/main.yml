@@ -91,15 +91,19 @@ jobs:
         else
           TAG_NAME1=${TAG_NAME:1:-1}
           echo "TAG_NAME1: $TAG_NAME1"
-          echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
-          FirstCharcter=${TAG_NAME1:0:1}
-          echo "FirstCharcter: $FirstCharcter"
-          echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           if grep -Ril "Unreleased" CHANGELOG.md 
           then
               UnrelCharcter=true
+              FirstCharcter=${TAG_NAME1:0:1}
+              echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
+              echo "FirstCharcter: $FirstCharcter"
+              echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           else
               UnrelCharcter=false
+			  echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
+              FirstCharcter=${TAG_NAME1:0:1}
+              echo "FirstCharcter: $FirstCharcter"
+              echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           fi
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
