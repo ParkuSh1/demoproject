@@ -119,7 +119,7 @@ jobs:
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
+       RELEASE_NAME: "${{ steps.read-version.outputs.tag }}"
        TAG_PREFIX_REGEX: "[v]?"
        PRE_RELEASE: "false"
        DRAFT_RELEASE: "false"
