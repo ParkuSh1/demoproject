@@ -153,7 +153,6 @@ jobs:
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
        prerelease: false
-
 # create a pre released version
    - name: PreRelease
      id: Pre_release
@@ -167,10 +166,9 @@ jobs:
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
        prerelease: true
-
 # run a script for assert preparation
    - name: script run 
-#     if: ${{ steps.create_release.outputs.upload_url }}
+     if: ${{ steps.create_release.outputs.upload_url }}
      run: |
         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
@@ -191,7 +189,7 @@ jobs:
 # upload file
    - name: Upload Release Asset
      id: upload-release-asset 
-#     if: ${{ steps.create_release.outputs.upload_url }}
+     if: ${{ steps.create_release.outputs.upload_url }}
      uses: actions/upload-release-asset@v1
      env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
