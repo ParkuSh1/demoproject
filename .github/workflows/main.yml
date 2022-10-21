@@ -135,7 +135,8 @@ jobs:
          path: ./CHANGELOG.md
 
 # create a new released version
-   - name:  Release
+   - name:  Release1
+   - id: create_release  
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
@@ -161,9 +162,9 @@ jobs:
      uses: docker://antonyurchenko/git-release:latest
      env:
        RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: "update"
+#       UNRELEASED: "update"
 #       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: "true"
+       PRE_RELEASE: "false"
        DRAFT_RELEASE: "false"
      with:
        args: download/*.zip
