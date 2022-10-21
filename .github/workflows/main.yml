@@ -156,7 +156,7 @@ jobs:
      run: |
         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
-		echo 
+        echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
 # create a new pre-released version
    - name: Pre-Release
 #     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
