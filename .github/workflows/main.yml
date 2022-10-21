@@ -174,9 +174,9 @@ jobs:
 #upload assert file
    - name: Upload Release Asset
      id: upload-release-asset 
-     uses: actions/upload-artifact@v2
+     uses: actions/upload-release-asset@v1
      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
-        path: ${{ env.BUILD_DIR }}/HMI_FW/FW-HMI.tar.gz
-        name:HMI_FW/FW-HMI.tar.gz
+        path: ${{ env.BUILD_DIR }}//HMI_FW//FW-HMI.tar.gz
+        name:FW-HMI.tar.gz
