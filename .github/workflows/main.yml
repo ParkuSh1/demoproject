@@ -31,7 +31,7 @@ jobs:
          echo "{version}={$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT
          echo "{tag}={v$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT           
     - id: changelog-enforcer
-      uses: dangoslen/changelog-enforcer@v5
+      uses: dangoslen/changelog-enforcer@v2
       with:
          skipLabels: "skip-changelog"
          changeLogPath: 'CHANGELOG.md'
