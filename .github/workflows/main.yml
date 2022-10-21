@@ -140,7 +140,7 @@ jobs:
 # create a new released version
    - name: Release
      id: create_release
-     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
+#     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
      uses: actions/create-release@v1.1.4
      env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
