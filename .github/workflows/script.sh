@@ -39,8 +39,8 @@ filenamesfb+=$sbuextn
 echo $filenamebin
 echo $filenamesfb
 
-cp $1//Binary//$filenamebin $1//HMI_FW//$filenamebin
-cp $1/Binary//$filenamesfb $1//HMI_FW//$filenamesfb
+cp $1/Binary/$filenamebin $1/HMI_FW/$filenamebin
+cp $1/Binary/$filenamesfb $1//HMI_FW/$filenamesfb
 
 tar cvzf $1//HMI_FW//FW-HMI.tar.gz  $1//HMI_FW/*.*
 
