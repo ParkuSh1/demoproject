@@ -134,7 +134,7 @@ jobs:
 # read changelog entry for version
    - name: read changelog entry for version
      id: changelog_reader
-     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
+#     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
      uses: mindsers/changelog-reader-action@v2
      with:
          version: "${{ steps.read-version.outputs.tag }}"
@@ -148,7 +148,7 @@ jobs:
      env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
-       tag_name: "${{ env.TAG_NAME1 }}"
+       tag_name: latest
        release_name: "${{ env.TAG_NAME1 }}"
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
@@ -156,7 +156,7 @@ jobs:
 
 # run a script for assert preparation
    - name: script run 
-#     if: ${{ steps.create_release.outputs.upload_url }}
+     if: ${{ steps.create_release.outputs.upload_url }}
      run: |
         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
@@ -176,7 +176,7 @@ jobs:
 # upload file
    - name: Upload Release Asset
      id: upload-release-asset 
-#     if: ${{ steps.create_release.outputs.upload_url }}
+     if: ${{ steps.create_release.outputs.upload_url }}
      uses: actions/upload-release-asset@v1
      env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
