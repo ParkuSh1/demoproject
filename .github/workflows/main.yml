@@ -31,7 +31,7 @@ jobs:
          echo "{version}={$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT
          echo "{tag}={v$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT           
     - id: changelog-enforcer
-      uses: dangoslen/changelog-enforcer@v2
+      uses: dangoslen/changelog-enforcer@v5
       with:
          skipLabels: "skip-changelog"
          changeLogPath: 'CHANGELOG.md'
@@ -170,13 +170,15 @@ jobs:
        DRAFT_RELEASE: "false"
      with:
        args: download/*.zip
-
-#upload assert file
-   - name: Upload Release Asset
-     id: upload-release-asset 
-     uses: actions/upload-release-asset@v1
+# create a new  released version
+   - name: Pre-Release
+#     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
+     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
+     uses: docker://antonyurchenko/git-release:latest
      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
+       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
+       PRE_RELEASE: "false"
+       DRAFT_RELEASE: "false"
      with:
-        path: ${{ env.BUILD_DIR }}//HMI_FW//FW-HMI.tar.gz
-        name:FW-HMI.tar.gz
+       args: download/*.zip
