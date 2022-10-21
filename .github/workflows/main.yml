@@ -149,6 +149,12 @@ jobs:
        draft: false
        prerelease: false
 
+# run a bash script
+   - name: script run 
+     run: |
+        chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+        bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}  
+
 # create a new pre-released version
    - name: Pre-Release
 #     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
@@ -162,10 +168,4 @@ jobs:
        DRAFT_RELEASE: "false"
      with:
        args: download/*.zip
-
-# run a bash script
-   - name: script run 
-     run: |
-        chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-        bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}  
-
+       args: HMI_FW/*.*
