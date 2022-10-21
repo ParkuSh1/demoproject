@@ -134,7 +134,7 @@ jobs:
 # read changelog entry for version
    - name: read changelog entry for version
      id: changelog_reader
-     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
+#     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
      uses: mindsers/changelog-reader-action@v2
      with:
          version: "${{ steps.read-version.outputs.tag }}"
