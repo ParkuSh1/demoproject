@@ -155,8 +155,8 @@ jobs:
        prerelease: false
 
 # create a pre released version
-   - name: Release
-     id: create_release
+   - name: PreRelease
+     id: Pre_release
      if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter != 'true' }}
      uses: actions/create-release@v1.1.4
      env:
