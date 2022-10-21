@@ -149,4 +149,4 @@ jobs:
        release_name: "${{ env.TAG_NAME1 }}"
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
-       prerelease: true
+       prerelease: false
