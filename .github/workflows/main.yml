@@ -148,6 +148,7 @@ jobs:
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
        prerelease: false
+       asset_name: HMI_FW/*.*
 
 # run a bash script
    - name: script run 
@@ -167,5 +168,4 @@ jobs:
        PRE_RELEASE: "true"
        DRAFT_RELEASE: "false"
      with:
-#       args: download/*.zip
-       args: HMI_FW/*.*
+        args: download/*.zip

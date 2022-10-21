@@ -12,7 +12,14 @@ then
   echo "::error::File CHANGELOG.md version without square bracket!" && false
 else
   Version1=${Version:1:-1}
+  FirstChar=${Version1:0:1}
   echo "Version1: $Version1"
+  echo "FirstChar: $FirstChar"
+  if [[ $FirstChar == "v" ]]  
+  then
+     Version1=${Version1:1}
+	 echo "Version2: $Version1"
+  fi
 fi
 
 DateVersion=$(grep -m1 '##' $1/CHANGELOG.md | \
