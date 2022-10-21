@@ -6,7 +6,7 @@
 ### Added 
 - checking change enforce log action pre-release check
 - proper study checking version release
-- changed the yml file enforce change log
+- changed the yml file enforce changes log
 ### Changed
 -  using create release docker for release action
 -  checking latest tag cgeck
