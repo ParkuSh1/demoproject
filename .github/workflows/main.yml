@@ -80,7 +80,8 @@ jobs:
      uses: actions/checkout@v2
 
 # This action checks CHANGELOG.md for current version of project
-# This version read from CHANGELOG.md file and send as a release name 
+# set environment variable for version tag name, and to identify version 
+# starts With v ([v1.1.1]) or not ([1.1.1])
 
    - name: Get_version_Changelog
      id: Get_version_Changelog
@@ -133,6 +134,7 @@ jobs:
 # read changelog entry for version
    - name: read changelog entry for version
      id: changelog_reader
+     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
      uses: mindsers/changelog-reader-action@v2
      with:
          version: "${{ steps.read-version.outputs.tag }}"
@@ -152,15 +154,15 @@ jobs:
        draft: false
        prerelease: false
 
-# run a bash script
-#   - name: script run 
-#     run: |
-#        chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-#        bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
-#        echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
+# run a script for assert preparation
+   - name: script run 
+     if: ${{ steps.create_release.outputs.upload_url }}
+     run: |
+        chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+        bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
+
 # create a new pre-released version
    - name: Pre-Release
-#     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
      uses: docker://antonyurchenko/git-release:latest
      env:
