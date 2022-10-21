@@ -138,7 +138,7 @@ jobs:
 
 # create a new released version
    - name: Release
-       id: create_release
+     id: create_release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
