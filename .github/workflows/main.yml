@@ -177,5 +177,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
         upload_url:${{ steps.create_release.outputs.upload_url }}
-        asset_name: ./HMI_FW/*.tar.gz # path + filename
+        asset_name: "${GITHUB_WORKSPACE}/HMI_FW/*.tar.gz" # path + filename
         asset_label: latest
