@@ -136,6 +136,7 @@ jobs:
 
 # create a new released version
    - name:  Release1
+   - id: create_release  
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
@@ -175,6 +176,6 @@ jobs:
      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        upload_url:${{ steps.create_release.outputs.upload_url }}
         asset_name: ./HMI_FW/*.tar.gz # path + filename
         asset_label: latest
