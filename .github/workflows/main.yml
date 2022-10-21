@@ -179,4 +179,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
         path: ${{ env.BUILD_DIR }}/HMI_FW/FW-HMI.tar.gz
-        name:FW-HMI.tar.gz
+        name:latest
