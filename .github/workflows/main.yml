@@ -167,5 +167,5 @@ jobs:
        PRE_RELEASE: "true"
        DRAFT_RELEASE: "false"
      with:
-       args: download/*.zip
+#       args: download/*.zip
        args: HMI_FW/*.*
