@@ -156,6 +156,7 @@ jobs:
      run: |
         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
+		echo 
 # create a new pre-released version
    - name: Pre-Release
 #     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
@@ -177,6 +178,6 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
          upload_url: ${{ steps.create_release.outputs.upload_url }}
-         asset_path: ${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz
+         asset_path: "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
          asset_name: FW-HMI.tar.gz
          asset_content_type: application/tar
