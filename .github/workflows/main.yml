@@ -175,7 +175,6 @@ jobs:
      if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
        PRE_RELEASE: false
        DRAFT_RELEASE: false
      with:
