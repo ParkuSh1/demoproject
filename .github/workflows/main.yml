@@ -110,6 +110,7 @@ jobs:
           env
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
+          echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
         fi
 
 #delete the last pre release
