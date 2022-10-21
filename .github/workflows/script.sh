@@ -42,7 +42,14 @@ echo $filenamesfb
 cp $1//Binary//$filenamebin $1//HMI_FW//$filenamebin
 cp $1/Binary//$filenamesfb $1//HMI_FW//$filenamesfb
 
-$zip -m $1//HMI_FW/FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
+tar cvzf $1//HMI_FW//FW-HMI.tar.gz  $1//HMI_FW/*.*
+
+rm $1//HMI_FW//$filenamebin
+rm $1//HMI_FW//$filenamesfb
+
+#zip $1//FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
+#tar cvzf FW-HMI.tar.gz $1//FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
+#tar -a -c -f $1//FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb 
 
 #grep -m1 '##' $1/Changelog.md | \
 #  awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}'
