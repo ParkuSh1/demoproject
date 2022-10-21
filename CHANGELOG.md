@@ -2,8 +2,7 @@
 [//]: <> (Latest version number for doxygen action)
 
 
-## [0.0.2] - 2022-10-20
-## [Unreleased]
+## [v0.0.3] - 2022-10-20
 ### Added 
 - checking change enforce log action pre-release check
 - proper study checking version release
@@ -19,21 +18,6 @@
 - NFC-Thread-Verzögerung
 - S4-Config auf Version 18.0
 
-## [0.0.2] - 2022-10-20
-### Added 
-- checking change enforce log action pre-release check
-- proper study checking version release
-- changed the yml file enforce changes log
-### Changed
--  using create release docker for release action
--  checking latest tag cgeck
--  modified based on word
-- verifing release ckeck
-### Fixed
-### Removed
-### TODO / LIMITATIONS
-- NFC-Thread-Verzögerung
-- S4-Config auf Version 18.0
 
 ## [0.36.0] - 2022-08-26
 ### Added 
