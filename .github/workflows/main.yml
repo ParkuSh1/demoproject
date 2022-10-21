@@ -107,6 +107,7 @@ jobs:
               echo "FirstCharcter: $FirstCharcter"
               echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           fi
+          env
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
         fi
@@ -139,9 +140,7 @@ jobs:
 # create a new released version
    - name: Release
      id: create_release
-#     if: (  startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
-#     if: (startsWith(github.event.ref, 'refs/tags/v'))
      uses: actions/create-release@v1.1.4
      env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -170,3 +169,13 @@ jobs:
        DRAFT_RELEASE: "false"
      with:
        args: HMI_FW/*.*
+# upload file
+   - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: Fhwang0926/upload-release-asset@v1.1.8
+      env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ${GITHUB_WORKSPACE}/HMI_FW/*.*
+          asset_label: latest
