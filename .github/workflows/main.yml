@@ -137,7 +137,8 @@ jobs:
          path: ./CHANGELOG.md
 
 # create a new released version
-   - name:  Release
+   - name: Release
+       id: create_release
 #     if: (  startsWith(github.env.ref, 'refs/tags/v') )
      if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
 #     if: (startsWith(github.event.ref, 'refs/tags/v'))
@@ -170,14 +171,14 @@ jobs:
      with:
        args: download/*.zip
 
-# create a new pre-released version
-   - name: Pre-Release1
-#     if: ( ! startsWith(github.env.ref, 'refs/tags/v') )
-     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
-     uses: docker://antonyurchenko/git-release:latest
+#upload assert file
+   - name: Upload Release Asset
+     id: upload-release-asset 
+     uses: actions/upload-release-asset@v1
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: "false"
-       DRAFT_RELEASE: "false"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
-       args: download/*.zip
+        upload_url:${{ steps.create_release.outputs.upload_url }}
+        asset_path:./my-artifact.zip
+        asset_name: my-artifact.zip
+        asset_content_type: application/zip
