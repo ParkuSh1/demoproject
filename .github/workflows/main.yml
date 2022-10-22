@@ -156,7 +156,7 @@ jobs:
 
 # run a script for assert preparation
    - name: script run 
-     if: ${{ steps.create_release.outputs.upload_url }}
+#     if: ${{ steps.create_release.outputs.upload_url }}
      run: |
         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
