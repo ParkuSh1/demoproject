@@ -112,7 +112,12 @@ jobs:
           env
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
-          echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
+          echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz
+          if [[ $FirstCharcter == *[v]* ]]
+          then
+              IMAGE_VERSION=${TAG_NAME1:1}
+              echo IMAGE_VERSION=$IMAGE_VERSION
+          fi
         fi
 
 #delete the last pre release
