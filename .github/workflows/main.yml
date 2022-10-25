@@ -118,8 +118,6 @@ jobs:
               echo "Branch not found"
               IMAGE_VERSION=${TAG_NAME1:1}
               echo $IMAGE_VERSION               
-          else
-                echo Branch found"
           fi
         fi
 
