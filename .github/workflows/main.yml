@@ -109,7 +109,6 @@ jobs:
               echo "FirstCharcter: $FirstCharcter"
               echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           fi
-          env
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
           echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
