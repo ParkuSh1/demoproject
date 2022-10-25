@@ -116,7 +116,7 @@ jobs:
           if ${{ (env.FirstCharcter != 'v')}} == 'true';then
               echo "Branch not found"
               IMAGE_VERSION=${TAG_NAME1:1}
-              echo IMAGE_VERSION=$IMAGE_VERSION               
+              echo $IMAGE_VERSION               
            else
                 echo Branch found"
            fi
