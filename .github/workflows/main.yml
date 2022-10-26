@@ -102,24 +102,18 @@ jobs:
           if [[ $Version == *"unreleasestr"* ]]; 
           then
               UnrelCharcter=true
-              FirstCharcter=${TAG_NAME1:0:1}
-              echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
-              echo "FirstCharcter: $FirstCharcter"
-              echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           else
               UnrelCharcter=false
-              echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
-              FirstCharcter=${TAG_NAME1:0:1}
-              echo "FirstCharcter: $FirstCharcter"
-              echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           fi
+          FirstCharcter=${TAG_NAME1:0:1}
+          echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
+          echo "FirstCharcter: $FirstCharcter"
+          echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
           echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
-          if [[ "$FirstCharcter" != "$vstr" ]] 
+          if [[ "$FirstCharcter" == "$vstr" ]] 
           then
-              echo "Version not preceded with v"
-          else
               IMAGE_VERSION=${TAG_NAME1:1}
               echo else$IMAGE_VERSION
           fi
