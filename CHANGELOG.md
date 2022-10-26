@@ -34,7 +34,6 @@
 - S4-Config auf Version 18.0
 
 ## [0.36.0] - 2022-08-26
-## [Unreleased]
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
@@ -69,6 +68,7 @@
 ------------------------------------------------------------
 
 ## [0.35.1] - 2022-08-02
+## [Unreleased]
 ### Added
 - Touch Funktion für MainScreen umgesetzt
 - Prozess-spezifische Main-Screen Umsetzung
