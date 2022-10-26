@@ -180,7 +180,12 @@ jobs:
        release_name: "${{ env.TAG_NAME1 }}"
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
-       prerelease: true
+#       prerelease: true
+       prerelease: ${{ steps.changelog_reader.outputs.status == 'prereleased' }}
+       draft: ${{ steps.changelog_reader.outputs.status == 'unreleased' }}
+       allowUpdates: true
+       token: ${{ secrets.GITHUB_TOKEN }}
+
 # upload file
    - name: Upload Release Asset
      id: upload-release-asset 
