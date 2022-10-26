@@ -2,8 +2,7 @@
 [//]: <> (Latest version number for doxygen action)
 
 
-## [0.0.7] - 2022-10-20
-## [Unreleased]
+## [v0.0.7] - 2022-10-20
 ### Added 
 - check1
 - check2
