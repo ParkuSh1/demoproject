@@ -95,10 +95,11 @@ jobs:
         else
           TAG_NAME1=${TAG_NAME:1:-1}
           echo "TAG_NAME1: $TAG_NAME1"
-          substr="Unreleased"
+          unreleasestr="Unreleased"
+          vstr="v"
           Version=$(grep -m2 '##' CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $Version
-          if [[ $Version == *"$substr"* ]]; 
+          if [[ $Version == *"unreleasestr"* ]]; 
           then
               UnrelCharcter=true
               FirstCharcter=${TAG_NAME1:0:1}
@@ -115,7 +116,8 @@ jobs:
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
           echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
-          if [${{ env.FirstCharcter }} != 'v'];then
+          if [[ "$FirstCharcter" == "$vstr" ]] 
+          then
               echo "Version not preceded with v"
           else
               IMAGE_VERSION=${TAG_NAME1:1}
