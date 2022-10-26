@@ -115,7 +115,8 @@ jobs:
           echo "UnrelCharcter:$UnrelCharcter"
           echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"
           echo "${GITHUB_WORKSPACE}/HMI_FW/FW-HMI.tar.gz"
-          if [${{ env.FirstCharcter }} != 'v'];then
+          ref='v'
+          if [[ ${{ env.FirstCharcter }} == *${ref}* ]];then
               echo "Version not preceded with v"
           else
               IMAGE_VERSION=${TAG_NAME1:1}
