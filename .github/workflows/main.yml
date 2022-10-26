@@ -95,18 +95,20 @@ jobs:
         else
           TAG_NAME1=${TAG_NAME:1:-1}
           echo "TAG_NAME1: $TAG_NAME1"
-          unreleasestr="Unreleased"
+          substr="Unreleased"
           vstr="v"
           Version=$(grep -m2 '##' CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
           echo $Version
-          if [[ $Version == *"unreleasestr"* ]]; 
+          if [[ $Version == *"$substr"* ]];
           then
               UnrelCharcter=true
+              FirstCharcter=${TAG_NAME1:0:1}
+              echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
           else
               UnrelCharcter=false
+              echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
+              FirstCharcter=${TAG_NAME1:0:1}
           fi
-          FirstCharcter=${TAG_NAME1:0:1}
-          echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
           echo "FirstCharcter: $FirstCharcter"
           echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
           echo "UnrelCharcter:$UnrelCharcter"
