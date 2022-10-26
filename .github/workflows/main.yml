@@ -179,7 +179,7 @@ jobs:
        tag_name: "latest"
        release_name: "${{ env.TAG_NAME1 }}"
        body: ${{ steps.changelog_reader.outputs.changes }} 
-       draft: false
+#       draft: false
 #       prerelease: true
        prerelease: ${{ steps.changelog_reader.outputs.status == 'prereleased' }}
        draft: ${{ steps.changelog_reader.outputs.status == 'unreleased' }}
