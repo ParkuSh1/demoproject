@@ -168,18 +168,19 @@ jobs:
         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
         bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
 
-# create a new pre-released version
+# create a new released version
    - name: Pre-Release
-     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
-     uses: docker://antonyurchenko/git-release:latest
+     id: Pre-Release
+     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
+     uses: actions/create-release@v1.1.4
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: "update"
-#       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: "true"
-       DRAFT_RELEASE: "false"
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
-       args: HMI_FW/*.*
+       tag_name: "latest"
+       release_name: "${{ env.TAG_NAME1 }}"
+       body: ${{ steps.changelog_reader.outputs.changes }} 
+       draft: false
+       prerelease: true
 # upload file
    - name: Upload Release Asset
      id: upload-release-asset 
