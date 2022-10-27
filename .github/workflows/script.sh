@@ -53,8 +53,8 @@ cp $1/Binary/$filenamesfb $1//HMI_FW/$filenamesfb
 zip -r $1//HMI_FW//FW-HMI.zip $1//HMI_FW//
 
 
-rm $1//HMI_FW//$filenamebin
-rm $1//HMI_FW//$filenamesfb
+#rm $1//HMI_FW//$filenamebin
+#rm $1//HMI_FW//$filenamesfb
 
 #zip $1//FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
 #tar cvzf FW-HMI.tar.gz $1//FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
