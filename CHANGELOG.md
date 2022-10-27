@@ -1,8 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.8] - 2022-10-20
-## [Unreleased]
+## [v0.0.9] - 2022-10-20
 ### Added 
 - check unrl 
 - check2 unrl
@@ -18,6 +17,7 @@
 - S4-Config auf Version 18.0
 
 ## [0.0.8] - 2022-10-20
+## [Unreleased]
 ### Added 
 - check unrl 
 - check2 unrl
