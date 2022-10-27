@@ -171,14 +171,18 @@ jobs:
 # create a new pre-released version
    - name: Pre-Release
      if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
-     uses: "marvinpinto/action-automatic-releases@latest"
+     uses: softprops/action-gh-release@v1
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      with:
-       repo_token: "${{ secrets.GITHUB_TOKEN }}"
-       automatic_release_tag: "latest"
+       tag_name: "${{ env.TAG_NAME1 }}"
+       name: latest
+       body: ${{ steps.changelog_reader.outputs.changes }} 
+       draft: false
        prerelease: true
-       title: "Development Build"
-       files: |
-            HMI_FW/*.*
+       with:
+          files: |
+             HMI_FW/*.*
 
 # upload file
    - name: Upload Release Asset
