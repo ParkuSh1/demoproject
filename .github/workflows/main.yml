@@ -171,15 +171,14 @@ jobs:
 # create a new pre-released version
    - name: Pre-Release
      if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: "update"
-#       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: "true"
-       DRAFT_RELEASE: "false"
+     uses: "marvinpinto/action-automatic-releases@latest"
      with:
-       args: HMI_FW/*.*
+       repo_token: "${{ secrets.GITHUB_TOKEN }}"
+       automatic_release_tag: "latest"
+       prerelease: true
+       title: "Development Build"
+       files: |
+            HMI_FW/*.*
 
 # upload file
    - name: Upload Release Asset
