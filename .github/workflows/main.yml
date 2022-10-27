@@ -141,7 +141,7 @@ jobs:
 # read changelog entry for version
    - name: read changelog entry for version
      id: changelog_reader
-     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
+#     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
      uses: mindsers/changelog-reader-action@v2
      with:
          version: "${{ steps.read-version.outputs.tag }}"
@@ -177,10 +177,10 @@ jobs:
      with:
        tag_name: "${{ env.TAG_NAME1 }}"
        name: latest
-#       body: ${{ steps.changelog_reader.outputs.changes }} 
+       body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
        prerelease: true
-       body_path: CHANGELOG.md
+#       body_path: CHANGELOG.md
        files: |
             HMI_FW/*.*
 
