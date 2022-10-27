@@ -16,8 +16,8 @@
 - NFC-Thread-Verzögerung
 - S4-Config auf Version 18.0
 
-## [0.0.8] - 2022-10-20
 ## [Unreleased]
+## [0.0.8] - 2022-10-20
 ### Added 
 - check unrl 
 - check2 unrl
