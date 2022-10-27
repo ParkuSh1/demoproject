@@ -179,7 +179,7 @@ jobs:
        PRE_RELEASE: "true"
        DRAFT_RELEASE: "false"
      with:
-       args: HMI_FW/*.*
+       args: HMI_FW/*.zip
 
 # upload file
    - name: Upload Release Asset
