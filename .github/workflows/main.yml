@@ -180,9 +180,8 @@ jobs:
        body: ${{ steps.changelog_reader.outputs.changes }} 
        draft: false
        prerelease: true
-       with:
-          files: |
-             HMI_FW/*.*
+       files: |
+            HMI_FW/*.*
 
 # upload file
    - name: Upload Release Asset
