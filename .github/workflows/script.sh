@@ -46,15 +46,15 @@ filenamesfb+=$sbuextn
 echo $filenamebin
 echo $filenamesfb
 
-cp $1/Binary/$filenamebin $1/HMI_FW/$filenamebin
-cp $1/Binary/$filenamesfb $1//HMI_FW/$filenamesfb
+#cp $1/Binary/$filenamebin $1/HMI_FW/$filenamebin
+#cp $1/Binary/$filenamesfb $1//HMI_FW/$filenamesfb
 
 #tar cvzf $1//HMI_FW//FW-HMI.tar.gz  $1//HMI_FW/*.*
-zip -d $1//HMI_FW//FW-HMI.zip $1/Binary/$filenamebin $1/Binary/$filenamesfb
+zip  $1//HMI_FW//FW-HMI.zip $1/Binary/$filenamebin $1/Binary/$filenamesfb
 
 
-rm $1//HMI_FW//$filenamebin
-rm $1//HMI_FW//$filenamesfb
+#rm $1//HMI_FW//$filenamebin
+#rm $1//HMI_FW//$filenamesfb
 
 #zip $1//FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
 #tar cvzf FW-HMI.tar.gz $1//FW-HMI.zip $1//HMI_FW/$filenamebin $1//HMI_FW/$filenamesfb
