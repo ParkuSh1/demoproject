@@ -21,25 +21,6 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-# Enforces the update of a changelog file on every pull request 
-  enforce-changelog:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2.3.4
-    - id: read-version
-      run: |
-         echo "{version}={$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT
-         echo "{tag}={v$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT           
-    - id: changelog-enforcer
-      uses: dangoslen/changelog-enforcer@v2
-      with:
-         skipLabels: "skip-changelog"
-         changeLogPath: 'CHANGELOG.md'
-         expectedLatestVersion: ${{ steps.read-version.outputs.tag }}
-         missingUpdateErrorMessage: >
-           Changelog Enforcer: No update to CHANGELOG.md found!
-           Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
 
 # enforce-changelog job is responsible to monitor the CHANGELOG.md file before pull-rquest to master
 # Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
@@ -81,7 +62,13 @@ jobs:
      uses: actions/checkout@v2
 
 # run a build script for assert preparation
-   - name: build script run 
-     run: |
-        chmod +x "${GITHUB_WORKSPACE}/build.sh"
-        sh "${GITHUB_WORKSPACE}/build.sh" ${GITHUB_WORKSPACE}
+#   - name: build script run 
+#     run: |
+#        chmod +x "${GITHUB_WORKSPACE}/build.sh"
+#        sh "${GITHUB_WORKSPACE}/build.sh" ${GITHUB_WORKSPACE}
+
+   - name: arm-none-eabi-gcc
+     uses: fiam/arm-none-eabi-gcc@v1
+     with:
+       release: '9-2019-q4' # The arm-none-eabi-gcc release to use.
+     run: arm-none-eabi-size.exe Build/BF36_H753IIT6_BL/HMI_Projekt.elf
