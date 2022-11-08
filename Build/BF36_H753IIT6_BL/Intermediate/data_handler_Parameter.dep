@@ -1,0 +1,28 @@
+Build/BF36_H753IIT6_BL/Intermediate/data_handler_Parameter.o: \
+ src/data_handler_Parameter.c inc/data_handler_Parameter.h \
+ c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\9.3.1\include\stdint.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\stdint.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\_default_types.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\features.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\_newlib_version.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_intsup.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_stdint.h \
+ inc/DataHandlerParameter.h
+
+inc/data_handler_Parameter.h:
+
+c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\9.3.1\include\stdint.h:
+
+c:\sysgcc\arm-eabi\arm-none-eabi\include\stdint.h:
+
+c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\_default_types.h:
+
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\features.h:
+
+c:\sysgcc\arm-eabi\arm-none-eabi\include\_newlib_version.h:
+
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_intsup.h:
+
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_stdint.h:
+
+inc/DataHandlerParameter.h:

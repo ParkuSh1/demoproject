@@ -1,0 +1,5 @@
+Build/BF36_H753IIT6_BL/Intermediate/startup_stm32h743xx.o: \
+ startup_stm32h743xx.c \
+ c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\9.3.1\include\stddef.h
+
+c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\9.3.1\include\stddef.h:

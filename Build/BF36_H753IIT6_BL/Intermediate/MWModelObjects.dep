@@ -1,0 +1,34 @@
+Build/BF36_H753IIT6_BL/Intermediate/MWModelObjects.o: \
+ GeneratedCode/MWModelObjects.c GeneratedCode/ewlocale.h \
+ GeneratedCode/_MWModelModel.h PlatformPackage/RTE/ewrte.h inc/ewconfig.h \
+ inc/ewdef.h PlatformPackage/RGB888/ewgfx.h \
+ PlatformPackage/RGB888/ewgfxdriver.h PlatformPackage/RGB888/ewextgfx.h \
+ PlatformPackage/RGB888/ewgfxdefs.h PlatformPackage/RGB888/ewextbmp.h \
+ PlatformPackage/RGB888/ewextfnt.h PlatformPackage/RGB888/ewgfxcore.h \
+ GeneratedCode/MWModelObjects.h
+
+GeneratedCode/ewlocale.h:
+
+GeneratedCode/_MWModelModel.h:
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
+
+PlatformPackage/RGB888/ewgfx.h:
+
+PlatformPackage/RGB888/ewgfxdriver.h:
+
+PlatformPackage/RGB888/ewextgfx.h:
+
+PlatformPackage/RGB888/ewgfxdefs.h:
+
+PlatformPackage/RGB888/ewextbmp.h:
+
+PlatformPackage/RGB888/ewextfnt.h:
+
+PlatformPackage/RGB888/ewgfxcore.h:
+
+GeneratedCode/MWModelObjects.h:

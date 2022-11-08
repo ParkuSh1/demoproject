@@ -80,6 +80,12 @@ jobs:
    - name: checkout
      uses: actions/checkout@v2
 
+# run a build script for assert preparation
+   - name: build script run 
+     run: |
+        chmod +x "${GITHUB_WORKSPACE}/script.sh"
+        bash "${GITHUB_WORKSPACE}/script.sh" ${GITHUB_WORKSPACE}
+
 # This action checks CHANGELOG.md for current version of project
 # set environment variable for version tag name, and to identify version 
 # starts With v ([v1.1.1]) or not ([1.1.1])

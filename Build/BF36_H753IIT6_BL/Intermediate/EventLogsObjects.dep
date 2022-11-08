@@ -1,0 +1,34 @@
+Build/BF36_H753IIT6_BL/Intermediate/EventLogsObjects.o: \
+ GeneratedCode/EventLogsObjects.c GeneratedCode/ewlocale.h \
+ GeneratedCode/_EventLogsEVLOGS.h PlatformPackage/RTE/ewrte.h \
+ inc/ewconfig.h inc/ewdef.h PlatformPackage/RGB888/ewgfx.h \
+ PlatformPackage/RGB888/ewgfxdriver.h PlatformPackage/RGB888/ewextgfx.h \
+ PlatformPackage/RGB888/ewgfxdefs.h PlatformPackage/RGB888/ewextbmp.h \
+ PlatformPackage/RGB888/ewextfnt.h PlatformPackage/RGB888/ewgfxcore.h \
+ GeneratedCode/EventLogsObjects.h
+
+GeneratedCode/ewlocale.h:
+
+GeneratedCode/_EventLogsEVLOGS.h:
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
+
+PlatformPackage/RGB888/ewgfx.h:
+
+PlatformPackage/RGB888/ewgfxdriver.h:
+
+PlatformPackage/RGB888/ewextgfx.h:
+
+PlatformPackage/RGB888/ewgfxdefs.h:
+
+PlatformPackage/RGB888/ewextbmp.h:
+
+PlatformPackage/RGB888/ewextfnt.h:
+
+PlatformPackage/RGB888/ewgfxcore.h:
+
+GeneratedCode/EventLogsObjects.h:

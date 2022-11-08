@@ -1,0 +1,317 @@
+Build/BF36_H753IIT6_BL/Intermediate/Res.o: GeneratedCode/Res.c \
+ GeneratedCode/ewlocale.h GeneratedCode/Res.h PlatformPackage/RTE/ewrte.h \
+ inc/ewconfig.h inc/ewdef.h PlatformPackage/RGB888/ewgfx.h \
+ PlatformPackage/RGB888/ewgfxdriver.h PlatformPackage/RGB888/ewextgfx.h \
+ PlatformPackage/RGB888/ewgfxdefs.h PlatformPackage/RGB888/ewextbmp.h \
+ PlatformPackage/RGB888/ewextfnt.h PlatformPackage/RGB888/ewgfxcore.h \
+ GeneratedCode/_ResLorchLogo.h \
+ GeneratedCode/_ResIcon_Function_A_36x36_V1.h \
+ GeneratedCode/_ResIcon_Pararmeter_A_40x40_V.h \
+ GeneratedCode/_ResLinie_Enabled.h GeneratedCode/_ResHighlightA.h \
+ GeneratedCode/_Resfooterline1.h \
+ GeneratedCode/_ResIcon_Caption_A_139x40_V1.h \
+ GeneratedCode/_ResHoldFrame.h GeneratedCode/_ResHoldFrameABackground.h \
+ GeneratedCode/_ResSystemIcons.h \
+ GeneratedCode/_ResHorizontalLine1_A_800x2_V1.h \
+ GeneratedCode/_ResHorizontalLine1_A_800x2_V2.h \
+ GeneratedCode/_ResFontsize1.h GeneratedCode/_ResFontsize2.h \
+ GeneratedCode/_ResFontsize3.h GeneratedCode/_ResFontsize4.h \
+ GeneratedCode/_ResFontsize5.h \
+ GeneratedCode/_ResCursor_Backlight_TachoL_320x196.h \
+ GeneratedCode/_ResCursor_Backlight_DYN_320x112.h \
+ GeneratedCode/_ResCursor_Backlight_MenuFull_658x74.h \
+ GeneratedCode/_ResCursor_Line_TachoL_280x6.h \
+ GeneratedCode/_ResCursor_Active_TachoL_280x14.h \
+ GeneratedCode/_ResCursor_Backlight_MenuLarge_534x74.h \
+ GeneratedCode/_ResCursor_Line_MenuFull_700x2.h \
+ GeneratedCode/_ResCursor_Line_MenuLarge_500x2.h \
+ GeneratedCode/_ResCursor_Active_MenuFull_560x8.h \
+ GeneratedCode/_ResCursor_Active_MenuLarge_430x8.h \
+ GeneratedCode/_ResCursor_Line_MenuSmall_360x2.h \
+ GeneratedCode/_ResLine_Tabelle_Senkrecht_360x2.h \
+ GeneratedCode/_ResBlende1_A_800_20.h \
+ GeneratedCode/_ResCursor_Backlight_ScreenLarge_534x313.h \
+ GeneratedCode/_ResCursor_Backlight_ScreenSmall_269x313.h \
+ GeneratedCode/_ResIcon_MDG_A_92x72_V1.h \
+ GeneratedCode/_ResPopUp_Frame_F_33x33_V1.h \
+ GeneratedCode/_ResIcons_Process_A_110x80_V2.h \
+ GeneratedCode/_ResIcons_Process_A_132x96_V2.h \
+ GeneratedCode/_ResArrowhead_Left.h \
+ GeneratedCode/_ResHighlight_NPOverview_A_72x65_V1.h \
+ GeneratedCode/_ResIcon_Pararmeter_A_32x32_V1.h \
+ GeneratedCode/_ResIcon_NPmisc_A_80x80_V1.h \
+ GeneratedCode/_ResCursor_Backlight_NP_80x80_V1.h \
+ GeneratedCode/_ResIcons_Arrow_20x18_V1.h \
+ GeneratedCode/_ResIcons_NPOverview_A_151x51_New.h \
+ GeneratedCode/_ResIcon_VerfGrp_A_77x56_V1.h \
+ GeneratedCode/_ResIcon_VerfGrp_A_52x38_V1.h \
+ GeneratedCode/_ResGradient_Left_MDG_96x80_V1.h \
+ GeneratedCode/_ResGradient_Right_MDG_96x80_V1.h \
+ GeneratedCode/_ResPopUp_Infill_F_33x33_V1.h \
+ GeneratedCode/_ResCursor_Backlight_LargePlate_132x96_V1.h \
+ GeneratedCode/_ResCursor_Line_LargePlate_132x96_V1.h \
+ GeneratedCode/_ResCursor_Glow_LargePlate_132x96_V1.h \
+ GeneratedCode/_ResIcons_VerfGrp_A_132x96_V1.h \
+ GeneratedCode/_ResPopUp_Shade_Vert_20x350_V1.h \
+ GeneratedCode/_ResIcons_Process_A_74x46_V1.h \
+ GeneratedCode/_ResModeDummy.h \
+ GeneratedCode/_ResLine_Horizontal_190x1_V1.h \
+ GeneratedCode/_ResCursor_Backlight_PopUp_MenuLarge_420x80_V1.h \
+ GeneratedCode/_ResCursor_Line_PopUp_MenuLarge_470x13_V1.h \
+ GeneratedCode/_ResCursor_Glow_PopUp_MenuLarge_470x13_V1.h \
+ GeneratedCode/_ResLine_Vertical_2x350_V1.h \
+ GeneratedCode/_ResScrollbar_Thumb_54x10_V1.h \
+ GeneratedCode/_ResCursor_Backlight_Button_126x80_V1.h \
+ GeneratedCode/_ResCursor_Line_Button_126x64_V1.h \
+ GeneratedCode/_ResCursor_Glow_Button_126x64_V1.h \
+ GeneratedCode/_ResCursor_Backlight_RingMDG_800x240_V1.h \
+ GeneratedCode/_ResCursor_Glow_RingMDG_280x180_V1.h \
+ GeneratedCode/_ResCursor_Line_RingMDG_280x180_V1.h \
+ GeneratedCode/_ResIcons_Function_A_132x96.h \
+ GeneratedCode/_ResIcons_Load_A_16x16.h \
+ GeneratedCode/_ResIcon_Shape_A_132x96_V1.h \
+ GeneratedCode/_ResIcon_Shape_A_110x80_V1.h \
+ GeneratedCode/_ResIcon_Shape_A_77x56_V1.h \
+ GeneratedCode/_ResIcon_Shape_A_52x38_V1.h \
+ GeneratedCode/_ResIcon_Flag_A_95x64_V1.h \
+ GeneratedCode/_ResIcon_WeldStatus_A_40x40_V1.h \
+ GeneratedCode/_ResCursor_Backlight_Button_150x65_V1.h \
+ GeneratedCode/_ResCursor_Line_Button_150x65_V1.h \
+ GeneratedCode/_ResCursor_Glow_Button_150x65_V1.h \
+ GeneratedCode/_ResHighlightStatusZeile.h \
+ GeneratedCode/_ResCursor_Active_MenuSmall.h \
+ GeneratedCode/_ResCursor_Backlight_MenuSmall.h \
+ GeneratedCode/_ResCursor_Backlight_Param_Value_126x80_V1.h \
+ GeneratedCode/_ResCursor_Param_Value_126x64_V1.h \
+ GeneratedCode/_ResCursor_Glow_Param_value_126x64_V1.h \
+ GeneratedCode/_ResCursor_Backlight_TachoLarge_336x258_V2.h \
+ GeneratedCode/_ResCursor_Glow_TachoLarge_336x258_V2.h \
+ GeneratedCode/_ResCursor_Line_TachoLarge_220x4_V2.h \
+ GeneratedCode/_ResCursor_Backlight_Dynamik_344x165_V2.h \
+ GeneratedCode/_ResCursor_Glow_Dynamik_344x165_V2.h \
+ GeneratedCode/_ResCursor_Line_TachoLarge_220x4_V3.h \
+ GeneratedCode/_ResCursor_Backlight_Job_500x58_V2.h \
+ GeneratedCode/_ResCursor_Glow_Job_300x8_V2.h \
+ GeneratedCode/_ResCursor_Line_Job_400x2_V2.h \
+ GeneratedCode/_ResCursor_Backlight_TachoSmall_258x198_V2.h \
+ GeneratedCode/_ResCursor_Glow_TachoSmall_258x198_V2.h \
+ GeneratedCode/_ResCursor_Line_TachoLargeSmall_220x4_V2.h \
+ GeneratedCode/_ResFontsize6.h
+
+GeneratedCode/ewlocale.h:
+
+GeneratedCode/Res.h:
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
+
+PlatformPackage/RGB888/ewgfx.h:
+
+PlatformPackage/RGB888/ewgfxdriver.h:
+
+PlatformPackage/RGB888/ewextgfx.h:
+
+PlatformPackage/RGB888/ewgfxdefs.h:
+
+PlatformPackage/RGB888/ewextbmp.h:
+
+PlatformPackage/RGB888/ewextfnt.h:
+
+PlatformPackage/RGB888/ewgfxcore.h:
+
+GeneratedCode/_ResLorchLogo.h:
+
+GeneratedCode/_ResIcon_Function_A_36x36_V1.h:
+
+GeneratedCode/_ResIcon_Pararmeter_A_40x40_V.h:
+
+GeneratedCode/_ResLinie_Enabled.h:
+
+GeneratedCode/_ResHighlightA.h:
+
+GeneratedCode/_Resfooterline1.h:
+
+GeneratedCode/_ResIcon_Caption_A_139x40_V1.h:
+
+GeneratedCode/_ResHoldFrame.h:
+
+GeneratedCode/_ResHoldFrameABackground.h:
+
+GeneratedCode/_ResSystemIcons.h:
+
+GeneratedCode/_ResHorizontalLine1_A_800x2_V1.h:
+
+GeneratedCode/_ResHorizontalLine1_A_800x2_V2.h:
+
+GeneratedCode/_ResFontsize1.h:
+
+GeneratedCode/_ResFontsize2.h:
+
+GeneratedCode/_ResFontsize3.h:
+
+GeneratedCode/_ResFontsize4.h:
+
+GeneratedCode/_ResFontsize5.h:
+
+GeneratedCode/_ResCursor_Backlight_TachoL_320x196.h:
+
+GeneratedCode/_ResCursor_Backlight_DYN_320x112.h:
+
+GeneratedCode/_ResCursor_Backlight_MenuFull_658x74.h:
+
+GeneratedCode/_ResCursor_Line_TachoL_280x6.h:
+
+GeneratedCode/_ResCursor_Active_TachoL_280x14.h:
+
+GeneratedCode/_ResCursor_Backlight_MenuLarge_534x74.h:
+
+GeneratedCode/_ResCursor_Line_MenuFull_700x2.h:
+
+GeneratedCode/_ResCursor_Line_MenuLarge_500x2.h:
+
+GeneratedCode/_ResCursor_Active_MenuFull_560x8.h:
+
+GeneratedCode/_ResCursor_Active_MenuLarge_430x8.h:
+
+GeneratedCode/_ResCursor_Line_MenuSmall_360x2.h:
+
+GeneratedCode/_ResLine_Tabelle_Senkrecht_360x2.h:
+
+GeneratedCode/_ResBlende1_A_800_20.h:
+
+GeneratedCode/_ResCursor_Backlight_ScreenLarge_534x313.h:
+
+GeneratedCode/_ResCursor_Backlight_ScreenSmall_269x313.h:
+
+GeneratedCode/_ResIcon_MDG_A_92x72_V1.h:
+
+GeneratedCode/_ResPopUp_Frame_F_33x33_V1.h:
+
+GeneratedCode/_ResIcons_Process_A_110x80_V2.h:
+
+GeneratedCode/_ResIcons_Process_A_132x96_V2.h:
+
+GeneratedCode/_ResArrowhead_Left.h:
+
+GeneratedCode/_ResHighlight_NPOverview_A_72x65_V1.h:
+
+GeneratedCode/_ResIcon_Pararmeter_A_32x32_V1.h:
+
+GeneratedCode/_ResIcon_NPmisc_A_80x80_V1.h:
+
+GeneratedCode/_ResCursor_Backlight_NP_80x80_V1.h:
+
+GeneratedCode/_ResIcons_Arrow_20x18_V1.h:
+
+GeneratedCode/_ResIcons_NPOverview_A_151x51_New.h:
+
+GeneratedCode/_ResIcon_VerfGrp_A_77x56_V1.h:
+
+GeneratedCode/_ResIcon_VerfGrp_A_52x38_V1.h:
+
+GeneratedCode/_ResGradient_Left_MDG_96x80_V1.h:
+
+GeneratedCode/_ResGradient_Right_MDG_96x80_V1.h:
+
+GeneratedCode/_ResPopUp_Infill_F_33x33_V1.h:
+
+GeneratedCode/_ResCursor_Backlight_LargePlate_132x96_V1.h:
+
+GeneratedCode/_ResCursor_Line_LargePlate_132x96_V1.h:
+
+GeneratedCode/_ResCursor_Glow_LargePlate_132x96_V1.h:
+
+GeneratedCode/_ResIcons_VerfGrp_A_132x96_V1.h:
+
+GeneratedCode/_ResPopUp_Shade_Vert_20x350_V1.h:
+
+GeneratedCode/_ResIcons_Process_A_74x46_V1.h:
+
+GeneratedCode/_ResModeDummy.h:
+
+GeneratedCode/_ResLine_Horizontal_190x1_V1.h:
+
+GeneratedCode/_ResCursor_Backlight_PopUp_MenuLarge_420x80_V1.h:
+
+GeneratedCode/_ResCursor_Line_PopUp_MenuLarge_470x13_V1.h:
+
+GeneratedCode/_ResCursor_Glow_PopUp_MenuLarge_470x13_V1.h:
+
+GeneratedCode/_ResLine_Vertical_2x350_V1.h:
+
+GeneratedCode/_ResScrollbar_Thumb_54x10_V1.h:
+
+GeneratedCode/_ResCursor_Backlight_Button_126x80_V1.h:
+
+GeneratedCode/_ResCursor_Line_Button_126x64_V1.h:
+
+GeneratedCode/_ResCursor_Glow_Button_126x64_V1.h:
+
+GeneratedCode/_ResCursor_Backlight_RingMDG_800x240_V1.h:
+
+GeneratedCode/_ResCursor_Glow_RingMDG_280x180_V1.h:
+
+GeneratedCode/_ResCursor_Line_RingMDG_280x180_V1.h:
+
+GeneratedCode/_ResIcons_Function_A_132x96.h:
+
+GeneratedCode/_ResIcons_Load_A_16x16.h:
+
+GeneratedCode/_ResIcon_Shape_A_132x96_V1.h:
+
+GeneratedCode/_ResIcon_Shape_A_110x80_V1.h:
+
+GeneratedCode/_ResIcon_Shape_A_77x56_V1.h:
+
+GeneratedCode/_ResIcon_Shape_A_52x38_V1.h:
+
+GeneratedCode/_ResIcon_Flag_A_95x64_V1.h:
+
+GeneratedCode/_ResIcon_WeldStatus_A_40x40_V1.h:
+
+GeneratedCode/_ResCursor_Backlight_Button_150x65_V1.h:
+
+GeneratedCode/_ResCursor_Line_Button_150x65_V1.h:
+
+GeneratedCode/_ResCursor_Glow_Button_150x65_V1.h:
+
+GeneratedCode/_ResHighlightStatusZeile.h:
+
+GeneratedCode/_ResCursor_Active_MenuSmall.h:
+
+GeneratedCode/_ResCursor_Backlight_MenuSmall.h:
+
+GeneratedCode/_ResCursor_Backlight_Param_Value_126x80_V1.h:
+
+GeneratedCode/_ResCursor_Param_Value_126x64_V1.h:
+
+GeneratedCode/_ResCursor_Glow_Param_value_126x64_V1.h:
+
+GeneratedCode/_ResCursor_Backlight_TachoLarge_336x258_V2.h:
+
+GeneratedCode/_ResCursor_Glow_TachoLarge_336x258_V2.h:
+
+GeneratedCode/_ResCursor_Line_TachoLarge_220x4_V2.h:
+
+GeneratedCode/_ResCursor_Backlight_Dynamik_344x165_V2.h:
+
+GeneratedCode/_ResCursor_Glow_Dynamik_344x165_V2.h:
+
+GeneratedCode/_ResCursor_Line_TachoLarge_220x4_V3.h:
+
+GeneratedCode/_ResCursor_Backlight_Job_500x58_V2.h:
+
+GeneratedCode/_ResCursor_Glow_Job_300x8_V2.h:
+
+GeneratedCode/_ResCursor_Line_Job_400x2_V2.h:
+
+GeneratedCode/_ResCursor_Backlight_TachoSmall_258x198_V2.h:
+
+GeneratedCode/_ResCursor_Glow_TachoSmall_258x198_V2.h:
+
+GeneratedCode/_ResCursor_Line_TachoLargeSmall_220x4_V2.h:
+
+GeneratedCode/_ResFontsize6.h:

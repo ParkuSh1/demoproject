@@ -1,0 +1,21 @@
+0.37.2   
+ChangeLogVersion=0.37.2 
+"" 
+  8112237                 
+0.37.2  
+SysVersion=0.37.2  
+KVERSION=  8112237                 
+Major=0  
+Minor=37  
+k_ver=  8112237                 
+0.37.2  
+0.37.2 
+ArgDATE=08.11.2022 
+MYDATE=81122 
+ 81122 
+8112237   
+ #define K_VERSION (uint32_t)     8112237  //Format:V_ddmmyy_VV   
+ #define K_VERSION (uint32_t)     98112237  //Format:V_ddmmyy_VV  
+binfile = FW-HMI_09_1_2022-11-08_0.37.2.bin 
+creating bin from elf file 
+postbuild.bat 
