@@ -71,4 +71,9 @@ jobs:
      uses: fiam/arm-none-eabi-gcc@v1
      with:
        release: '9-2019-q4' # The arm-none-eabi-gcc release to use.
-     run: arm-none-eabi-size.exe Build/BF36_H753IIT6_BL/HMI_Projekt.elf
+
+# run a build script for assert preparation
+   - name: build script run 
+     run: |
+        arm-none-eabi-size.exe Build/BF36_H753IIT6_BL/HMI_Projekt.elf
+ 
