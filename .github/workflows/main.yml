@@ -71,8 +71,8 @@ jobs:
 #     uses: fiam/arm-none-eabi-gcc@v1
 #     with:
 #       release: '9-2019-q4' # The arm-none-eabi-gcc release to use.
-   - name: arm-none-eabi-gcc
-     uses: fnkr/github-action-git-bash@v1
+#   - name: arm-none-eabi-gcc
+#     uses: fnkr/github-action-git-bash@v1
       
 # run a build script for assert preparation
    - name: build script run 
