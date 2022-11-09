@@ -78,6 +78,5 @@ jobs:
    - name: build script run 
      run: |
         chmod +x "${GITHUB_WORKSPACE}/.github/workflows/build.sh"
-		ls
         bash "${GITHUB_WORKSPACE}/.github/workflows/build.sh" ${GITHUB_WORKSPACE}
  
