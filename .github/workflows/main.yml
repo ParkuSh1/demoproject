@@ -78,5 +78,6 @@ jobs:
 # run a build script for assert preparation
    - name: build script run 
      run: |
-        $ARM_NONE_EABI_GCC_PATH/arm-none-eabi-size.exe ${GITHUB_WORKSPACE}/Build/BF36_H753IIT6_BL/HMI_Projekt.elf
+        ls $ARM_NONE_EABI_GCC_PATH/
+#        $ARM_NONE_EABI_GCC_PATH/arm-none-eabi-size.exe ${GITHUB_WORKSPACE}/Build/BF36_H753IIT6_BL/HMI_Projekt.elf
  
