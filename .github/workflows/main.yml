@@ -77,6 +77,6 @@ jobs:
 # run a build script for assert preparation
    - name: build script run 
      run: |
-        chmod +x "${GITHUB_WORKSPACE}/build.sh"
-        bash "${GITHUB_WORKSPACE}/build.sh" ${GITHUB_WORKSPACE}
+        chmod +x "${GITHUB_WORKSPACE}/.github/workflows/build.sh"
+        bash "${GITHUB_WORKSPACE}/.github/workflows/build.sh" ${GITHUB_WORKSPACE}
  
