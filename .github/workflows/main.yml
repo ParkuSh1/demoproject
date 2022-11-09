@@ -70,7 +70,8 @@ jobs:
    - name: To create an environmental variable with the toolchain path provide a name via the `path-env-var` input
      uses: carlosperate/arm-none-eabi-gcc-action@v1
      with:
-     path-env-var: ARM_NONE_EABI_GCC_PATH
+         path-env-var: ARM_NONE_EABI_GCC_PATH
+
    - name: The path will be exported to that environmental variable name
      run: echo "The output path is $ARM_NONE_EABI_GCC_PATH"
       
