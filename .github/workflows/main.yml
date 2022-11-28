@@ -12,7 +12,7 @@ name: HMI Workflow
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
- pull_request:
+ push:
     branches: 
         - master
 env:
@@ -23,7 +23,7 @@ jobs:
 
 # Enforces the update of a changelog file on every pull request 
   enforce-changelog:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
@@ -69,7 +69,7 @@ jobs:
 #
 # else "v" before version number without unreleased tag, it will be a release version:           for eg. ## [v1.0.0] - yyyy-mm-dd
   release:
-   if: github.event_name == 'pull_request'
+   if: github.event_name == 'push'
     # The type of runner that the job will run on
    runs-on: ubuntu-latest
    outputs: 
@@ -188,78 +188,3 @@ jobs:
          asset_name: FW_HMI.zip
          asset_content_type: application/tarzip
 
-
-# doxygen job is responsible to generate documentation of HMI-Project and to store in a seperate branch gh-pages
-# User can download gh-pages branch as zip folder and open index.html file to see the projct documentation
-# there are four steps in this job - "check changelog" , Check project number, "Doxygen Action", and "deploy"
-  doxygen:
-   if: github.event_name == 'pull_request'
-   runs-on: ubuntu-latest
-   needs: release
-   steps:
-# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-   - name: checkout
-     uses: actions/checkout@v2
-
-# This action checks CHANGELOG.md for current version of project
-# This version read from CHANGELOG.md file and added as predecessor to commit message 
-# It makes easy to understand from which version and which commit the documentation is generated
-   - name: check changelog
-     id: check_changelog
-     run: |
-        [ -f CHANGELOG.md ] || ( echo "::error::File CHANGELOG.md not found!" && false )
-        IMAGE_VERSION1=$(grep '##' CHANGELOG.md | head -n 1 | cut -d ' ' -f 2)
-        echo "IMAGE_VERSION1: $IMAGE_VERSION1"
-        vstr="v"
-        if [[ $IMAGE_VERSION1 != *[{}\(\)\[\]]* ]]  
-        then
-          echo "::error::File CHANGELOG.md version without square bracket!" && false
-        else
-          IMAGE_VERSION2=${IMAGE_VERSION1:1:-1}
-          echo "IMAGE_VERSION2: $IMAGE_VERSION2"
-          FirstChar=${IMAGE_VERSION2:0:1}
-          echo "FirstChar: $FirstChar"
-          if [[ "$FirstChar" == "$vstr" ]] 
-          then
-              IMAGE_VERSION=${IMAGE_VERSION2:1}
-              echo if$IMAGE_VERSION
-           else
-              IMAGE_VERSION=$IMAGE_VERSION2 
-              echo else$IMAGE_VERSION             
-          fi
-        fi
-
-        [[ "$IMAGE_VERSION" == $IMAGE_TAG ]] && exit 0
-        reg_ex='^([0-9]+\.){2}(\*|[0-9]+)(-.*)?$'
-        [[ $IMAGE_VERSION =~ $reg_ex ]] || ( echo "::error::First Version Tag in CHANGELOG.md not SemVer or 'latest'!" && false )
-        echo "IMAGE_VERSION=v$IMAGE_VERSION" >> "$GITHUB_ENV"
-        echo "env.IMAGE_VERSION: $IMAGE_VERSION"
-        echo "::set-output name=image_version::${IMAGE_VERSION}"
-
-# This action checks CHANGELOG.md for project number
-# It adds this project number to PROJECT_NUMBER tag in doxyfile (in docker) and then use this project number to generate the documentation
-# Project number extracted by this action can be seen in file index.html heading from web browser
-   - name: Check project number
-     run: |
-        sed --in-place -r "s/^.*(PROJECT_NUMBER[ ]*=).*/\1 \"$IMAGE_VERSION\"/g" ./HMI_Projekt/Doxyfile
-
-# state hier the doxyfile path from your repository
-# This action generated the documentation depending on your doxyfile settings (see main.yml comment at the satrt of this file)
-   - name: Doxygen Action
-     uses: mattnotmitt/doxygen-action@v1.1.0
-     with:
-       # Path to Doxyfile
-       doxyfile-path: "./HMI_Projekt/Doxyfile" # default is ./Doxyfile
-       # Working directory
-       working-directory: '.' # default is .
-
-# This action deploy the generated documentation from "html" folder in a seperate branch gh-pages on the github.
-# It also appends the version number which read in previous step from CHANGELOG.md file and commit message to the complete commit
-   - name: Deploy
-     uses: peaceiris/actions-gh-pages@v3
-     with:
-      github_token: ${{ secrets.GITHUB_TOKEN  }}
-      # Default Doxyfile build documentation to html directory. 
-      # Change the directory if changes in Doxyfile
-      publish_dir: ./html
-      commit_message: '${{ steps.check_changelog.outputs.image_version}} ${{github.event.head_commit.message}}'
