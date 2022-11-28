@@ -2,6 +2,7 @@
 
 #set "projectdir=$1"
 echo $1
+echo $1
 
 Version=$(grep -m1 '##' $1/CHANGELOG.md | \
   awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
