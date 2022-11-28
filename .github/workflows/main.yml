@@ -120,7 +120,7 @@ jobs:
      if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
      uses: mindsers/changelog-reader-action@v2
      with:
-#         version: "${{ steps.tag_name.outputs.current_version  steps.read-version.outputs.tag }}"
+         version: "${{env.TAG_NAME1}}"
          path: ./CHANGELOG.md
 
 # run a script for assert preparation
