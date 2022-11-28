@@ -1,8 +1,7 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
-## [0.0.12] - 2022-10-27
-## [Unreleased]
+## [v0.0.13] - 2022-10-27
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
