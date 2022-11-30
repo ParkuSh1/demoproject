@@ -1,6 +1,18 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
+
+## [v0.0.14] - 2022-11-30
+### Added 
+- bug fix and understand the release change log
+### Changed
+- Changed the workflow
+- changed the project post build action
+### TODO / LIMITATIONS
+- version should be in the patter [1.1.1] or [v1.1.1]
+- Touch Handler/Process Selection in Prozessauswahl screen anpassen
+
+
 ## [v0.0.13] - 2022-10-27
 ### Added 
 - FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
