@@ -78,7 +78,7 @@ jobs:
 
 # This action checks CHANGELOG.md for current version of project
 # set environment variable for version tag name, and to identify version 
-# starts With v ([v1.1.1]) or not ([1.1.1])
+# starts With v ([v1.1.1]) or not ([1.1.1]) origin
 
    - name: Get_version_Changelog
      id: Get_version_Changelog
