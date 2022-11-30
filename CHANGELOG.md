@@ -1,23 +1,126 @@
-# Changelog demoproject
+# Changelog HMI Projekt
 [//]: <> (Latest version number for doxygen action)
 
-## [v0.0.9] - 2022-10-17 
+
+## [v0.37.5] - 2022-11-29
+
+
+## [v0.37.5] - 2022-11-29
 ### Added 
-- checking change enforce log action
+- SemanticUpdate.bat added in tools folder 
+- changed the version for changlog reader action in main.yml
 ### Changed
-- Bootloader 1.15.4 via externals linked
-- S4-Config 0.20.1 via externals linked
-- externals gitignore changed
-- Detailed Ethernet Status moved to Debug Mode 
-- Weldprograms Bitmap are now slelected with the Pic_ID insted of the ProzessType
-- Step size for Tacho is 0.1
-- Dynamic widget range is -10/+10
+-  added SemanticUpdate.bat
+### Fixed
+- Build error, due to post build batch file fixed
+
+
+## [v0.37.4] - 2022-11-28
+### Added 
+- Build error, due to post build batch file fixed
+- asset zip creation is part of post build action
+- github workflow, removed the scriptrun step.
+### Changed
+- asset zip creation is part of post build action
+### Fixed
+- Build error, due to post build batch file fixed
+
+
+
+## [v0.37.3] - 2022-11-21
+### Added 
+- New Cursor added for List Menu
+- List Menu updated with new touch/press Logic
+- Assets added from Binary folder
+- version number should be mentioned in square braces (e.g [1.1.1] for prerelease, [v1.1.1] for release)
+- prerelease creates a tag with latest, and release with version number v1.1.1 ( v is appended automatically for pre-release)
+- release creates a tag and release with v1.1.1
+- doxygen action also corrected to read proper version from changelog.md file
+- Request for WeldProg info and writ function DHW_RequestWeldProgInfo with DHW_Write_WeldProgInfo
+- Rereqest ProgInfo when Requesting DHW_RequestWeldProgInfo failed
+### Changed
+- neue statische Werte (LiBo + Dynamik) für das standardisierte Einschweißen
+- die Schweißzeit wurde auf 4s pro Job verlängert 
+### Fixed
+- doxygen action, error fixed when version in pattern [v1.1.1] and [1.1.1]
+- MDG Header in Status Bar changes text if Prog No changes
+
+## [0.37.2] - 2022-09-21
+### Added 
+- Version for AD-Tagung
+- New Resources files added for GUI components look and feel
+- New GUI components added
+- New Cursors and Icons added
+### Changed
+### Fixed
+- Main screen values are at larger distance
+- Power value can display 4 digits
+
+
+------------------------------------------------------------
+
+## [0.37.1] - 2022-09-16
+### Added 
+ - S4 Config updated
+ - MDG-List BAck functionality added
+### Changed
+ - Hold-Ist Values frame screen disappeared with button press/Rotary encoder rotations (no button press/rotary action is ignored). 
+ - If hold screen is active, touch screen uses first touch to disappear hold screen and next touch is recognized for valid further action.
+ - Main screen values "Power" component size updated for 4 digits values xx.xx
+ - Main screen values Curent, Material thickness and power are placed at larger distance from each other.
+ - SW Version increased to 0.37.1
+### Fixed
+- MDG-List default selcted entry chnaged 
+- Hold-Ist value frame "X" value display problem fixed.
+
+------------------------------------------------------------
+
+## [0.36.3] - 2022-09-12
+### Added 
+ - I>0 und Ist/Hold window is added
+ - Hold window dissapears only after an event on GUI
+### Changed
+- During MIG/MAG Welding StartI and StartSlope bits are always On (in 2Takt and 4Takt modes)
+- Main Screen Welding parameters Power is x.xx kW and Material thickness is xx.x mm
+- Debug Mode screen, all debug JC parameters are added as a widget
+- Status Bar displays selected Gas along with Mareial and wire
+- Process Selection screen Cursor default on Process selection, No Loop for selection with Rotary Knob.
+- Process Selection screen, if process selection is selected and pressed "back", stays content on Process Selection but selected process is centered and focused
+- Main screen Arc Length Correction is not -0
+- Mode Screen no endless loop with Rotary Encoder knob selection
+- use if memcpy instead of srcat to copy the Rx Buffer 
+- use of HAL_ETH_Transmit_IT instead HAL_ETH_Transmit (resolved the the suspension problem of the Ethernet communication)
 ### Fixed
 ### Removed
 ### TODO / LIMITATIONS
 -s4-COnfig Branch "Änderungen chn" noch nicht released deswegen wurde MW_ParameterModelObjects.ewu überschrieben
-- Touch Handler/Process Selection in Prozessauswahl screen anpassen
+- Hold window disappearing logic must be added to all screen with rotary encoders. Also, all hardware keys should make hold screen disappear.
 
+------------------------------------------------------------
+
+## [0.36.2] - 2022-08-30
+### Added 
+### Changed
+### Fixed
+- Auto test Pop-Up eingerichtet
+- Main Screen Tacho Recht - Second Parameter Object als Spannung Pognosewert hinzugefügt
+### Removed
+### TODO / LIMITATIONS
+-s4-COnfig Branch "Änderungen chn" noch nicht released deswegen wurde MW_ParameterModelObjects.ewu überschrieben
+
+------------------------------------------------------------
+
+## [0.36.1] - 2022-08-29
+### Added 
+- When QuickAccess Menu is active, Statusbar Touch is deactivated
+- Debug Mode Caption Buttons added correctly
+### Changed
+### Fixed
+- Prozessauswahl Screen Slide Touch handler
+- Prozessauswahl Screen Process-Plates Touch handler
+### TODO / LIMITATIONS
+-s4-COnfig Branch "Änderungen chn" noch nicht released deswegen wurde MW_ParameterModelObjects.ewu überschrieben
+------------------------------------------------------------
 
 ## [0.36.0] - 2022-08-26
 ### Added 

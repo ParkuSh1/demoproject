@@ -1,4 +1,4 @@
-# Workflow for demoproject .
+# Workflow for HMI Projekt.
 # Author - Sagar Chande (CHN), Lorch Schweisstechnik GmbH
 # This workflow contains a multiple jobs called "enforce-changelog", "release" and "doxygen"
 # "enforce-changelog" job needs git event as "pull-request" to master
@@ -10,32 +10,49 @@
 name: demoproject Workflow
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch demo
+# events but only for the master branch
 on:
-  push:
+ pull_request:
     branches: 
-        - main
+        - master
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
+# Enforces the update of a changelog file on every pull request 
+  enforce-changelog:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.4          
+    - id: changelogreader
+      uses: dangoslen/changelog-enforcer@v2
+      with:
+         changeLogPath: 'CHANGELOG.md'
+         skipLabels: "skip-changelog"
+         missingUpdateErrorMessage: >
+           Changelog Enforcer: No update to CHANGELOG.md found!
+           Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
+
 # enforce-changelog job is responsible to monitor the CHANGELOG.md file before pull-rquest to master
 # Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
 # this job compares existing CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
-  enforce-changelog:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2.3.4
-    - uses: dangoslen/changelog-enforcer@v2
-      with:
-        changeLogPath: 'CHANGELOG.md'
-        skipLabels: 'Skip-Changelog'
-        missingUpdateErrorMessage: >
-          Changelog Enforcer: No update to CHANGELOG.md found!
-          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
+#  enforce-changelog:
+#    if: github.event_name == 'push'
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: changelogreader
+#      uses: dangoslen/changelog-enforcer@v2
+#      with:
+#        changeLogPath: 'CHANGELOG.md'
+#        skipLabels: 'Skip-Changelog'
+#        missingUpdateErrorMessage: >
+#          Changelog Enforcer: No update to CHANGELOG.md found!
+#          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
+
+
 
 # release job is responsible to release a pre-release version/tag with name "latest"
 # there are 4 steps in this Job
@@ -47,33 +64,21 @@ jobs:
 #
 # else "v" before version number without unreleased tag, it will be a release version:           for eg. ## [v1.0.0] - yyyy-mm-dd
   release:
-   if: github.event_name == 'push'
+   if: github.event_name == 'pull_request'
     # The type of runner that the job will run on
    runs-on: ubuntu-latest
+   outputs: 
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
 # Steps represent a sequence of tasks that will be executed as part of the job
    steps:
-# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
    - name: checkout
-     uses: actions/checkout@v2
-
-   - name: Delete last Pre-Release
-     if: (! startsWith(github.event.ref, 'refs/tags/v')) 
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "Latest"
-       UNRELEASED: delete
-       PRE_RELEASE: true
-       DRAFT_RELEASE: true
-     with:
-       args: download/*.zip
-
-# Delete the last "latest" release version tag (and not pre-released one) if exists
-   - name: Delete tag latest
-     if: ( ! startsWith(github.ref, 'refs/tags/v'))
-     run: (git tag -d latest && git push origin :refs/tags/latest) || true
+     uses: actions/checkout@v3.1.0
 
 # This action checks CHANGELOG.md for current version of project
-# This version read from CHANGELOG.md file and send as a release name 
+# set environment variable for version tag name, and to identify version 
+# starts With v ([v1.1.1]) or not ([1.1.1])
+
    - name: Get_version_Changelog
      id: Get_version_Changelog
      run: |
@@ -85,39 +90,70 @@ jobs:
         else
           TAG_NAME1=${TAG_NAME:1:-1}
           echo "TAG_NAME1: $TAG_NAME1"
-          echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
+          substr="Unreleased"
+          Version=$(grep -m2 '##' CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
+          echo $Version
+          if [[ $Version == *"$substr"* ]];
+          then
+              UnrelCharcter=true
+              FirstCharcter=${TAG_NAME1:0:1}
+              echo "TAG_NAME1=v$TAG_NAME1" >> "$GITHUB_ENV"
+          else
+              UnrelCharcter=false
+              echo "TAG_NAME1=$TAG_NAME1" >> "$GITHUB_ENV"
+              FirstCharcter=${TAG_NAME1:0:1}
+          fi
+          echo "FirstCharcter: $FirstCharcter"
+          echo "FirstCharcter=$FirstCharcter" >> "$GITHUB_ENV"
+          echo "UnrelCharcter:$UnrelCharcter"
+          echo "UnrelCharcter=$UnrelCharcter" >> "$GITHUB_ENV"          
         fi
 
-# retrieve version1
-#   - name: Retrieve version
-#     env:
-#       ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-#     run: |
-#         echo "${{ env.TAG_NAME }}"
-
-#echo ::set-env name=TAG_NAME::$(grep -m1 '##' ${GITHUB_WORKSPACE}/CHANGELOG.md | awk '{for(i=1; i<=NF; i++) if($i~/##/) print $(i+1)}')
-# create a new pre-Release version 
-   - name: Pre-Release
-     if: (! startsWith(github.event.ref, 'refs/tags/v')) 
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: update
-       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: true
-       DRAFT_RELEASE: false
+# read changelog entry for version
+   - name: read changelog entry for version
+     id: changelog_reader
+     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
+     uses: mindsers/changelog-reader-action@v2
      with:
-       args: download/*.zip
+         version: "${{env.TAG_NAME1}}"
+         path: ./CHANGELOG.md
+
+# run a script for assert preparation
+#   - name: script run 
+#     if: ${{ steps.create_release.outputs.upload_url }}
+#     run: |
+#        chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+#        bash "${GITHUB_WORKSPACE}/.github/workflows/script.sh" ${GITHUB_WORKSPACE}
 
 # create a new released version
    - name: Release
-     if: startsWith(github.event.ref, 'refs/tags/v')  
+     id: create_release
+     if: ${{ env.FirstCharcter == 'v' && env.UnrelCharcter != 'true' }}
+     uses: actions/create-release@v1.1.4
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     with:
+       tag_name: "${{ env.TAG_NAME1 }}"
+       release_name: "${{ env.TAG_NAME1 }}"
+       body: ${{ steps.changelog_reader.outputs.changes }} 
+       draft: false
+       prerelease: false
+
+
+#delete the last pre release
+   - name: Delete last Pre-Release
+#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
+     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
      uses: docker://antonyurchenko/git-release:latest
      env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: false
-       DRAFT_RELEASE: false
+       RELEASE_NAME: "Latest"
+       UNRELEASED: delete
      with:
-       args: download/*.zip
+       args: Asset/*.zip
+
+# Delete the last "latest" release version tag (and not pre-released one) if exists
+   - name: Delete tag latest
+     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
+#     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
+     run: (git tag -d latest && git push origin :refs/tags/latest) || true
 
