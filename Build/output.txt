@@ -1,0 +1,35 @@
+block size =16
+arguments to make header are:
+Firmware type is 0
+Version number is 0.37.2
+Version date is 8112022
+Magic: b'LBL1'!!
+Header size is according to the offset 512
+arguments to make header are:
+Firmware type is 0
+Version number is 0.37.2
+Version date is 8112022
+Magic: b'LBL1'!!
+number of segment :9
+0x8020600
+0x810d9c0
+0x8113580
+0x81135a0
+0x81135a0
+0x81135a0
+0x81135a0
+0x906e69d4
+number of segment :9
+0x80002a0
+0x8006170
+0x8008c18
+0x8009080
+0x8018b68
+0x8018d4d
+0x8018d4d
+0x8018d4d
+Merging
+SBSFU Base = 0x8000000
+Writing header = 0x8020000
+APPLI Base = 0x8020200
+Writing to Build\\..\\Binary\\\\SBSFU_HMI_Projekt_Internal.bin 2294568560

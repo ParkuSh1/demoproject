@@ -1,0 +1,9 @@
+Build/BF36_H753IIT6_BL/Intermediate/ewtimer.o: \
+ PlatformPackage/RTE/ewtimer.c PlatformPackage/RTE/ewrte.h inc/ewconfig.h \
+ inc/ewdef.h
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
