@@ -1,0 +1,8 @@
+Build/BF36_H753IIT6_BL/Intermediate/SamplingProfiler.o: \
+ D:/GIT_Source/HMI_Project/GitBuild/HMI_Projekt/Middlewares/Profiler/SamplingProfiler.cpp \
+ D:/GIT_Source/HMI_Project/GitBuild/HMI_Projekt/Middlewares/Profiler/SysprogsProfilerInterface.h \
+ D:/GIT_Source/HMI_Project/GitBuild/HMI_Projekt/Middlewares/Profiler/SmallNumberCoder.h
+
+D:/GIT_Source/HMI_Project/GitBuild/HMI_Projekt/Middlewares/Profiler/SysprogsProfilerInterface.h:
+
+D:/GIT_Source/HMI_Project/GitBuild/HMI_Projekt/Middlewares/Profiler/SmallNumberCoder.h:

@@ -1,0 +1,42 @@
+Build/BF36_H753IIT6_BL/Intermediate/MDGObjects.o: \
+ GeneratedCode/MDGObjects.c GeneratedCode/ewlocale.h \
+ GeneratedCode/_MDGObjectsMDG_DiameterEntry.h PlatformPackage/RTE/ewrte.h \
+ inc/ewconfig.h inc/ewdef.h PlatformPackage/RGB888/ewgfx.h \
+ PlatformPackage/RGB888/ewgfxdriver.h PlatformPackage/RGB888/ewextgfx.h \
+ PlatformPackage/RGB888/ewgfxdefs.h PlatformPackage/RGB888/ewextbmp.h \
+ PlatformPackage/RGB888/ewextfnt.h PlatformPackage/RGB888/ewgfxcore.h \
+ GeneratedCode/_MDGObjectsMDG_ListEntry.h \
+ GeneratedCode/_MDGObjectsMDG_GasEntry.h \
+ GeneratedCode/_MDGObjectsMDG_MaterialEntry.h GeneratedCode/MDGObjects.h
+
+GeneratedCode/ewlocale.h:
+
+GeneratedCode/_MDGObjectsMDG_DiameterEntry.h:
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
+
+PlatformPackage/RGB888/ewgfx.h:
+
+PlatformPackage/RGB888/ewgfxdriver.h:
+
+PlatformPackage/RGB888/ewextgfx.h:
+
+PlatformPackage/RGB888/ewgfxdefs.h:
+
+PlatformPackage/RGB888/ewextbmp.h:
+
+PlatformPackage/RGB888/ewextfnt.h:
+
+PlatformPackage/RGB888/ewgfxcore.h:
+
+GeneratedCode/_MDGObjectsMDG_ListEntry.h:
+
+GeneratedCode/_MDGObjectsMDG_GasEntry.h:
+
+GeneratedCode/_MDGObjectsMDG_MaterialEntry.h:
+
+GeneratedCode/MDGObjects.h:

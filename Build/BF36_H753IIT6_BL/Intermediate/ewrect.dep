@@ -1,0 +1,9 @@
+Build/BF36_H753IIT6_BL/Intermediate/ewrect.o: \
+ PlatformPackage/RTE/ewrect.c PlatformPackage/RTE/ewrte.h inc/ewconfig.h \
+ inc/ewdef.h
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:

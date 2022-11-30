@@ -1,0 +1,78 @@
+Build/BF36_H753IIT6_BL/Intermediate/Graphics.o: GeneratedCode/Graphics.c \
+ GeneratedCode/ewlocale.h GeneratedCode/_GraphicsArcPath.h \
+ PlatformPackage/RTE/ewrte.h inc/ewconfig.h inc/ewdef.h \
+ PlatformPackage/RGB888/ewgfx.h PlatformPackage/RGB888/ewgfxdriver.h \
+ PlatformPackage/RGB888/ewextgfx.h PlatformPackage/RGB888/ewgfxdefs.h \
+ PlatformPackage/RGB888/ewextbmp.h PlatformPackage/RGB888/ewextfnt.h \
+ PlatformPackage/RGB888/ewgfxcore.h GeneratedCode/_GraphicsPath.h \
+ GeneratedCode/_GraphicsCanvas.h GeneratedCode/_ResourcesBitmap.h \
+ GeneratedCode/_CoreResource.h GeneratedCode/_ResourcesFont.h \
+ GeneratedCode/Graphics.h GeneratedCode/Resources.h GeneratedCode/Views.h \
+ GeneratedCode/_ViewsBorder.h GeneratedCode/_CoreRectView.h \
+ GeneratedCode/_CoreView.h GeneratedCode/_ViewsFillPath.h \
+ GeneratedCode/_ViewsFrame.h GeneratedCode/_ViewsImage.h \
+ GeneratedCode/_ViewsLine.h GeneratedCode/_CoreLineView.h \
+ GeneratedCode/_ViewsRectangle.h GeneratedCode/_ViewsStrokePath.h \
+ GeneratedCode/_ViewsText.h
+
+GeneratedCode/ewlocale.h:
+
+GeneratedCode/_GraphicsArcPath.h:
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
+
+PlatformPackage/RGB888/ewgfx.h:
+
+PlatformPackage/RGB888/ewgfxdriver.h:
+
+PlatformPackage/RGB888/ewextgfx.h:
+
+PlatformPackage/RGB888/ewgfxdefs.h:
+
+PlatformPackage/RGB888/ewextbmp.h:
+
+PlatformPackage/RGB888/ewextfnt.h:
+
+PlatformPackage/RGB888/ewgfxcore.h:
+
+GeneratedCode/_GraphicsPath.h:
+
+GeneratedCode/_GraphicsCanvas.h:
+
+GeneratedCode/_ResourcesBitmap.h:
+
+GeneratedCode/_CoreResource.h:
+
+GeneratedCode/_ResourcesFont.h:
+
+GeneratedCode/Graphics.h:
+
+GeneratedCode/Resources.h:
+
+GeneratedCode/Views.h:
+
+GeneratedCode/_ViewsBorder.h:
+
+GeneratedCode/_CoreRectView.h:
+
+GeneratedCode/_CoreView.h:
+
+GeneratedCode/_ViewsFillPath.h:
+
+GeneratedCode/_ViewsFrame.h:
+
+GeneratedCode/_ViewsImage.h:
+
+GeneratedCode/_ViewsLine.h:
+
+GeneratedCode/_CoreLineView.h:
+
+GeneratedCode/_ViewsRectangle.h:
+
+GeneratedCode/_ViewsStrokePath.h:
+
+GeneratedCode/_ViewsText.h:

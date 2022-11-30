@@ -1,0 +1,14 @@
+Build/BF36_H753IIT6_BL/Intermediate/ewscalars.o: \
+ PlatformPackage/RTE/ewscalars.c PlatformPackage/RTE/ewrte.h \
+ inc/ewconfig.h inc/ewdef.h PlatformPackage/RTE/ewextrte.h \
+ c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\9.3.1\include\stdarg.h
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
+
+PlatformPackage/RTE/ewextrte.h:
+
+c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\9.3.1\include\stdarg.h:

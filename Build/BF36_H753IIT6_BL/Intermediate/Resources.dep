@@ -1,0 +1,67 @@
+Build/BF36_H753IIT6_BL/Intermediate/Resources.o: \
+ GeneratedCode/Resources.c GeneratedCode/ewlocale.h \
+ GeneratedCode/_ResourcesBitmap.h PlatformPackage/RTE/ewrte.h \
+ inc/ewconfig.h inc/ewdef.h PlatformPackage/RGB888/ewgfx.h \
+ PlatformPackage/RGB888/ewgfxdriver.h PlatformPackage/RGB888/ewextgfx.h \
+ PlatformPackage/RGB888/ewgfxdefs.h PlatformPackage/RGB888/ewextbmp.h \
+ PlatformPackage/RGB888/ewextfnt.h PlatformPackage/RGB888/ewgfxcore.h \
+ GeneratedCode/_CoreResource.h GeneratedCode/_ResourcesFont.h \
+ GeneratedCode/Resources.h GeneratedCode/_ResourcesDefaultBitmap.h \
+ GeneratedCode/_ResourcesDefaultFont.h \
+ GeneratedCode/_ResourcesFontSmall.h GeneratedCode/_ResourcesFontMedium.h \
+ GeneratedCode/_ResourcesFontLarge.h \
+ GeneratedCode/_ResourcesFontExtraLarge.h \
+ GeneratedCode/_ResourcesWhiteBitmapStripe.h \
+ GeneratedCode/_ResourcesKeyIconsSmall.h \
+ GeneratedCode/_ResourcesNavigationIconsMedium.h \
+ GeneratedCode/_ResourcesNavigationIconsExtraLarge.h
+
+GeneratedCode/ewlocale.h:
+
+GeneratedCode/_ResourcesBitmap.h:
+
+PlatformPackage/RTE/ewrte.h:
+
+inc/ewconfig.h:
+
+inc/ewdef.h:
+
+PlatformPackage/RGB888/ewgfx.h:
+
+PlatformPackage/RGB888/ewgfxdriver.h:
+
+PlatformPackage/RGB888/ewextgfx.h:
+
+PlatformPackage/RGB888/ewgfxdefs.h:
+
+PlatformPackage/RGB888/ewextbmp.h:
+
+PlatformPackage/RGB888/ewextfnt.h:
+
+PlatformPackage/RGB888/ewgfxcore.h:
+
+GeneratedCode/_CoreResource.h:
+
+GeneratedCode/_ResourcesFont.h:
+
+GeneratedCode/Resources.h:
+
+GeneratedCode/_ResourcesDefaultBitmap.h:
+
+GeneratedCode/_ResourcesDefaultFont.h:
+
+GeneratedCode/_ResourcesFontSmall.h:
+
+GeneratedCode/_ResourcesFontMedium.h:
+
+GeneratedCode/_ResourcesFontLarge.h:
+
+GeneratedCode/_ResourcesFontExtraLarge.h:
+
+GeneratedCode/_ResourcesWhiteBitmapStripe.h:
+
+GeneratedCode/_ResourcesKeyIconsSmall.h:
+
+GeneratedCode/_ResourcesNavigationIconsMedium.h:
+
+GeneratedCode/_ResourcesNavigationIconsExtraLarge.h:
