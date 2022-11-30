@@ -12,9 +12,9 @@ name: HMI Workflow
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
- push:
+ pull_request:
     branches: 
-        - master
+        - test
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
   
@@ -23,27 +23,22 @@ jobs:
 
 # Enforces the update of a changelog file on every pull request 
   enforce-changelog:
-    if: github.event_name == 'push'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.3.4
-    - id: read-version
-      run: |
-         echo "{version}={$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT
-         echo "{tag}={v$(jq -r ".version" package.json)}" >> $GITHUB_OUTPUT           
-    - id: changelog-enforcer
+    - uses: actions/checkout@v2.3.4          
+    - id: changelogreader
       uses: dangoslen/changelog-enforcer@v2
       with:
-         skipLabels: "skip-changelog"
          changeLogPath: 'CHANGELOG.md'
-         expectedLatestVersion: ${{ steps.read-version.outputs.tag }}
+         skipLabels: "skip-changelog"
          missingUpdateErrorMessage: >
            Changelog Enforcer: No update to CHANGELOG.md found!
            Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
 
 # enforce-changelog job is responsible to monitor the CHANGELOG.md file before pull-rquest to master
 # Pull request will not be succeeded if CHANGELOG.md file is not changed/updated
-# this job compares existing CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
+# this job compares CHANGELOG.md file in master and CHANGELOG.md file in project structure which is about to pull in master
 #  enforce-changelog:
 #    if: github.event_name == 'push'
 #    runs-on: ubuntu-latest
@@ -69,7 +64,7 @@ jobs:
 #
 # else "v" before version number without unreleased tag, it will be a release version:           for eg. ## [v1.0.0] - yyyy-mm-dd
   release:
-   if: github.event_name == 'push'
+   if: github.event_name == 'pull_request'
     # The type of runner that the job will run on
    runs-on: ubuntu-latest
    outputs: 
@@ -82,7 +77,7 @@ jobs:
 
 # This action checks CHANGELOG.md for current version of project
 # set environment variable for version tag name, and to identify version 
-# starts With v ([v1.1.1]) or not ([1.1.1])
+# starts With v ([v1.1.1]) or not ([1.1.1]) origin
 
    - name: Get_version_Changelog
      id: Get_version_Changelog
@@ -161,30 +156,3 @@ jobs:
      if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true' }}
 #     if: ( ! startsWith(github.event.ref, 'refs/tags/v'))
      run: (git tag -d latest && git push origin :refs/tags/latest) || true
-
-# create a new pre-released version
-   - name: Pre-Release
-     if: ${{ env.FirstCharcter != 'v' && env.UnrelCharcter == 'true'}}
-     uses: docker://antonyurchenko/git-release:latest
-     env:
-       RELEASE_NAME: "${{ env.TAG_NAME1 }}"
-       UNRELEASED: "update"
-#       UNRELEASED_TAG: "${{ env.TAG_NAME1 }}"
-       PRE_RELEASE: "true"
-       DRAFT_RELEASE: "false"
-     with:
-       args: Asset/*.zip
-
-# upload file
-   - name: Upload Release Asset
-     id: upload-release-asset 
-     if: ${{ steps.create_release.outputs.upload_url }}
-     uses: actions/upload-release-asset@v1
-     env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-     with:
-         upload_url: ${{ steps.create_release.outputs.upload_url }}
-         asset_path: "./Asset/FW_HMI.zip"
-         asset_name: FW_HMI.zip
-         asset_content_type: application/tarzip
-
