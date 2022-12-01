@@ -4,7 +4,7 @@
 ## [v0.0.15] - 2022-11-30
 ## [v0.0.15] - 2022-11-30
 ### Added 
-- FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
+- FirmwareUpdate with case
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
 - ETH Status and WIFI_Status as StatusIcon Widget (derived)
 - List of Materials, wires and gases are available for weldprogram selection
