@@ -2,7 +2,6 @@
 [//]: <> (Latest version number for doxygen action)
 
 ## [v0.0.15] - 2022-11-30
-## [v0.0.15] - 2022-11-30
 ### Added 
 - FirmwareUpdate with case
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
