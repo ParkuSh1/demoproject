@@ -14,7 +14,7 @@ name: HMI Workflow
 on:
  push:
     branches: 
-        - test
+        - main
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
   
