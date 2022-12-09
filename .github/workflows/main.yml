@@ -12,9 +12,12 @@ name: HMI Workflow
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
- push:
-    branches: 
-        - main
+  push:
+    branches: [ master ]
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"  
+  pull_request:
+    branches: [ master ]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
   
@@ -23,7 +26,7 @@ jobs:
 
 # Enforces the update of a changelog file on every pull request 
   enforce-changelog:
-    if: github.event_name == 'push'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4          
