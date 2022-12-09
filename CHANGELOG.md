@@ -1,6 +1,23 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
+## [v0.0.17] - 2022-12-09
+### Added 
+- checking the push request 
+### Changed
+- checking for mail.yml
+### Fixed
+### Removed
+### TODO / LIMITATIONS
+- Bootloader 1.15.4 via externals linked
+- S4-Config 0.20.1 via externals linked
+- externals gitignore changed
+- Detailed Ethernet Status moved to Debug Mode 
+- Weldprograms Bitmap are now slelected with the Pic_ID insted of the ProzessType
+- Step size for Tacho is 0.1
+- Dynamic widget range is -10/+10
+
+
 ## [v0.0.16] - 2022-12-09
 ### Added 
 - checking the push request 
