@@ -1,9 +1,24 @@
 # Changelog demoproject
 [//]: <> (Latest version number for doxygen action)
 
+## [v0.0.16] - 2022-12-09
+### Added 
+- checking the push request 
+- check2 unrl
+- checl4
+### Changed
+-  change1 unrl
+- change 2
+- change3
+### Fixed
+### Removed
+### TODO / LIMITATIONS
+- NFC-Thread-Verzögerung
+- S4-Config auf Version 18.0
+
 ## [v0.0.15] - 2022-11-30
 ### Added 
-- FirmwareUpdate with case HMI Keyupdate and Applicationupdate FW_CMD_UPDATE_COMPLETE_WITH_KEY in one step added (redmine #7996)
+- FirmwareUpdate with case
 - WIFI_Status as StatusIcon Widget replaces Bluetooth Placeholder
 - ETH Status and WIFI_Status as StatusIcon Widget (derived)
 - List of Materials, wires and gases are available for weldprogram selection
