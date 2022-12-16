@@ -58,7 +58,7 @@ jobs:
 
 # Adding asset on pull request
   create-asset:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
