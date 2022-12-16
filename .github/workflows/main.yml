@@ -54,18 +54,17 @@ jobs:
 #        missingUpdateErrorMessage: >
 #          Changelog Enforcer: No update to CHANGELOG.md found!
 #          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
-
   create-asset:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.3.4          
-    - id: changelogreader
-      uses: JasonEtco/upload-to-release@master
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2.3.4
+    - id: asset-pull-request
+      uses: actions/upload-artifact@v3
       with:
-          args: ./Asset/FW_HMI.zip
+         name: FW_HMI
+         path: Asset/
+         retention-days: 45
 
 # release job is responsible to release a pre-release version/tag with name "latest"
 # there are 4 steps in this Job
