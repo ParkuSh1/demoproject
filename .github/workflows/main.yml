@@ -55,7 +55,8 @@ jobs:
 #          Changelog Enforcer: No update to CHANGELOG.md found!
 #          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
 
-create-asset:
+# Adding asset on pull request
+  create-asset:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
@@ -63,8 +64,8 @@ create-asset:
     - id: asset-pull-request
       uses: actions/upload-artifact@v3
       with:
-         name: FW_HMI.zip
-         path: Asset
+         name: FW_HMI
+         path: Asset/*.zip
          retention-days: 45
 
 # release job is responsible to release a pre-release version/tag with name "latest"
