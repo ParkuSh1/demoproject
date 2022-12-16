@@ -64,7 +64,7 @@ jobs:
     - id: asset-pull-request
       uses: actions/upload-artifact@v2
       with:
-         name: "App-Artifacts"
+         name: FW-HMI.zip
          path: Asset/* 
          retention-days: 45
 
