@@ -63,10 +63,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2.3.4
     - id: asset-pull-request
-      uses: actions/upload-artifact@v3
-      with:
-         path: Asset/*.*
-         retention-days: 45
+     uses: actions/upload-release-asset@v1
+     env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     with:
+#         upload_url: ${{ steps.create_release.outputs.upload_url }}
+         asset_path: "./Asset/FW_HMI.zip"
+         asset_name: FW_HMI.zip
+         asset_content_type: application/tarzip
+
          
 # release job is responsible to release a pre-release version/tag with name "latest"
 # there are 4 steps in this Job
