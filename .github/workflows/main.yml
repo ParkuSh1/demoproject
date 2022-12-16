@@ -62,8 +62,8 @@ jobs:
     - id: asset-pull-request
       uses: actions/upload-artifact@v3
       with:
-         name: FW_HMI
-         path: Asset/
+         name: FW_HMI.zip
+         path: Asset
          retention-days: 45
 
 # release job is responsible to release a pre-release version/tag with name "latest"
