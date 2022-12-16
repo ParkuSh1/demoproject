@@ -66,7 +66,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
          path: Asset/*.zip
-         name: FW_HMI.zip 
+         name: FW_HMI 
          retention-days: 45
          
 # release job is responsible to release a pre-release version/tag with name "latest"
