@@ -55,7 +55,7 @@ jobs:
 #          Changelog Enforcer: No update to CHANGELOG.md found!
 #          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
 
-# Adding asset on pull request
+# Adding asset to pull request
   create-asset:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
