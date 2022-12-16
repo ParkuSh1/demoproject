@@ -59,12 +59,13 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-    - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
-      with:
-      args: ./Asset/FW_HMI.zip
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     id: Upload to release
+     uses: JasonEtco/upload-to-release@master
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     with:
+       args: ./Asset/FW_HMI.zip
+
         
 # release job is responsible to release a pre-release version/tag with name "latest"
 # there are 4 steps in this Job
