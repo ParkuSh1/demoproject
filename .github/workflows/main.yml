@@ -54,7 +54,8 @@ jobs:
 #        missingUpdateErrorMessage: >
 #          Changelog Enforcer: No update to CHANGELOG.md found!
 #          Please read the Release.md (https://github.com/LorchAW/S4_M4/blob/master/docs/Release.md).
-  create-asset:
+
+create-asset:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
