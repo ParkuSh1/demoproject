@@ -60,7 +60,8 @@ jobs:
   create-asset:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    steps:  
+    steps:
+    - uses: actions/checkout@v2.3.4
     - id: asset-pull-request
       uses: actions/upload-artifact@v3
       with:
